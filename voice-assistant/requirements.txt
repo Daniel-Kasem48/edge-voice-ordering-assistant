@@ -1,0 +1,30 @@
+# Core audio
+numpy==1.24.3
+scipy==1.11.4
+sounddevice==0.4.6
+pyaudio==0.2.13
+
+# Wake word
+openwakeword==0.6.0
+onnxruntime==1.16.3
+
+# Audio processing
+librosa==0.10.1
+webrtcvad==2.0.10
+pydub==0.25.1
+
+# TTS
+piper-tts==1.2.0
+
+# Utilities
+pyyaml==6.0.1
+python-dotenv==1.0.0
+click==8.1.7
+colorama==0.4.6
+tqdm==4.66.1
+requests==2.31.0
+psutil==5.9.6
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1

@@ -1,0 +1,460 @@
+text,intent
+what's on your menu,search_menu
+greetings,greeting
+proceed to checkout,checkout
+look at the menu,search_menu
+incorrect,confirm_no
+finished ordering,checkout
+make it one,add_to_cart
+exactly,confirm_yes
+what's the total,get_price
+correct,confirm_yes
+got a,query_item
+delete all,clear_cart
+remove,remove_from_cart
+can i get that,query_item
+is there any,query_item
+show menu,view_menu
+got any,query_item
+see my cart,view_cart
+hey,greeting
+can i get three,add_to_cart
+i'll have the,add_to_cart
+change,modify_item
+see the menu,view_menu
+can i have a,add_to_cart
+i'll have that,add_to_cart
+change it to,modify_item
+lemme get a,add_to_cart
+show me,search_menu
+change the size,modify_item
+nah,confirm_no
+delete the,remove_from_cart
+submit my order,checkout
+is that expensive,get_price
+submit order,checkout
+i'd like the,add_to_cart
+i'll take a,add_to_cart
+show complete menu,view_menu
+what are the choices,search_menu
+what's in the cart,view_cart
+pull up the menu,view_menu
+okay,confirm_yes
+show full menu,view_menu
+wrap it up,checkout
+what's up,greeting
+sounds good,confirm_yes
+let me get a,add_to_cart
+clear cart,clear_cart
+i want some,add_to_cart
+see the menu,search_menu
+is there a,query_item
+you got,query_item
+complete order,checkout
+what should i order,search_menu
+what's the price,get_price
+start fresh,clear_cart
+price of,get_price
+nevermind everything,clear_cart
+what do you recommend,search_menu
+i don't think so,confirm_no
+instead of,modify_item
+later,goodbye
+add a,add_to_cart
+i want a medium,add_to_cart
+my cart,view_cart
+menu please,search_menu
+give me three,add_to_cart
+don't do that,confirm_no
+show entire menu,view_menu
+let me see the menu,view_menu
+that's not right,confirm_no
+cancel everything,clear_cart
+don't,confirm_no
+cart status,view_cart
+grand total,get_price
+update,modify_item
+view menu,search_menu
+what choices are there,query_item
+yes add it,add_to_cart
+sure thing,confirm_yes
+show me what you have,search_menu
+right,confirm_yes
+different option,modify_item
+what's good,search_menu
+cancel the,remove_from_cart
+i need help,help
+what do you have,search_menu
+see my order,view_cart
+change the quantity,modify_item
+what's in my cart,view_cart
+hook me up with some,add_to_cart
+what categories,search_menu
+i'm finished,checkout
+uh uh,confirm_no
+view order,view_cart
+full menu,search_menu
+that's wrong,confirm_no
+that's everything,checkout
+what do you have,query_item
+go ahead,confirm_yes
+modify the,modify_item
+one please,add_to_cart
+empty my order,clear_cart
+is it on the menu,query_item
+i want to modify,modify_item
+a small one,add_to_cart
+peace,goodbye
+something without dairy,query_item
+empty my cart,clear_cart
+cancel order,clear_cart
+do you offer,query_item
+add one,add_to_cart
+remove that,remove_from_cart
+that's all,checkout
+put in some,add_to_cart
+get rid of,remove_from_cart
+list your,search_menu
+delete that,remove_from_cart
+small please,add_to_cart
+can i get the,add_to_cart
+bye,goodbye
+actually remove,remove_from_cart
+i'll take that,add_to_cart
+sounds good add it,add_to_cart
+i want three,add_to_cart
+add that,add_to_cart
+open the menu,view_menu
+do you have gluten free,query_item
+change that,modify_item
+stop,confirm_no
+quit,goodbye
+delete,remove_from_cart
+see you,goodbye
+hello,greeting
+get me some,add_to_cart
+show me the,search_menu
+what's my total,get_price
+rather than,modify_item
+subtotal,get_price
+what's the cost,get_price
+take care,goodbye
+show the cart,view_cart
+what do you serve,search_menu
+i want to start over,clear_cart
+show categories,search_menu
+view menu,view_menu
+could i have a,add_to_cart
+large please,add_to_cart
+that one,add_to_cart
+yep,confirm_yes
+two please,add_to_cart
+what's popular,search_menu
+for sure,confirm_yes
+nevermind the,remove_from_cart
+finish my order,checkout
+no thanks,confirm_no
+hook me up with a,add_to_cart
+what options do you have,query_item
+empty cart,clear_cart
+what do you offer,query_item
+take off the,remove_from_cart
+what do i have,view_cart
+switch it to,modify_item
+that's right,confirm_yes
+swap it for,modify_item
+cancel,remove_from_cart
+what's my total,view_cart
+make it two,add_to_cart
+take it off,remove_from_cart
+not really,confirm_no
+hiya,greeting
+remove it,remove_from_cart
+the total,get_price
+how do i use this,help
+hold on,confirm_no
+guide me,help
+anything like,query_item
+get me the,add_to_cart
+menu view,view_menu
+do you have vegetarian,query_item
+yo,greeting
+the cost,get_price
+check my cart,view_cart
+different size,modify_item
+what can i say,help
+let's checkout,checkout
+what's my order,view_cart
+mm mm,confirm_no
+change the,modify_item
+add two,add_to_cart
+scratch that,remove_from_cart
+view my cart,view_cart
+is it available,query_item
+i don't want the,remove_from_cart
+order the,add_to_cart
+clear everything,clear_cart
+any suggestions,search_menu
+hey there,greeting
+exit,goodbye
+affirmative,confirm_yes
+no,confirm_no
+are they available,query_item
+i'm done,goodbye
+are there,query_item
+hello there,greeting
+what should i get,search_menu
+order status,view_cart
+nevermind,confirm_no
+make it medium,add_to_cart
+is that available,query_item
+order so far,view_cart
+review order,view_cart
+view my order,view_cart
+let me have a,add_to_cart
+do you have dairy free,query_item
+what can i get,search_menu
+what can i order,search_menu
+absolutely,confirm_yes
+great,confirm_yes
+yeah please,confirm_yes
+no thank you,confirm_no
+any vegan options,query_item
+update my order,modify_item
+thanks bye,goodbye
+lemme have a,add_to_cart
+show me your,search_menu
+place order,checkout
+i want to change,modify_item
+take off,remove_from_cart
+i'll take the,add_to_cart
+give me some,add_to_cart
+get rid of the,remove_from_cart
+that's all thanks,goodbye
+done ordering,checkout
+do it,confirm_yes
+get me a,add_to_cart
+forget everything,clear_cart
+how much do i owe,get_price
+actually no,remove_from_cart
+good bye,goodbye
+what's available,search_menu
+reset,clear_cart
+help me,help
+do you make,query_item
+ring me up,checkout
+how much is,get_price
+hang on,confirm_no
+i want two,add_to_cart
+anything similar to,query_item
+show me all,search_menu
+i don't want,remove_from_cart
+forget it,confirm_no
+you got any,query_item
+yes,confirm_yes
+view the menu,view_menu
+make it,modify_item
+i'm done,checkout
+what sections,search_menu
+what types do you have,query_item
+finalize order,checkout
+is it expensive,get_price
+have a nice day,goodbye
+do you serve,query_item
+take it back,remove_from_cart
+put in a,add_to_cart
+throw in some,add_to_cart
+not yet,confirm_no
+modify,modify_item
+make it three,add_to_cart
+nope,confirm_no
+any vegetarian options,query_item
+i want one,add_to_cart
+do you have sugar free,query_item
+entire menu,search_menu
+check out,checkout
+reset my order,clear_cart
+can i get a,add_to_cart
+modify that,modify_item
+what's your best,search_menu
+i want a,add_to_cart
+replace it with,modify_item
+clear order,clear_cart
+do you have the,query_item
+what did i order,view_cart
+what do i owe,get_price
+thank you bye,goodbye
+remove all,clear_cart
+the menu,search_menu
+medium please,add_to_cart
+can you change,modify_item
+are there any,query_item
+switch to,modify_item
+yes please,confirm_yes
+i want the,add_to_cart
+i'm lost,help
+do you have any,query_item
+take that off,remove_from_cart
+cancel,confirm_no
+what should i do,help
+good evening,greeting
+perfect,confirm_yes
+wrong,confirm_no
+gimme some,add_to_cart
+i'll have a,add_to_cart
+start again,clear_cart
+something without gluten,query_item
+replace with,modify_item
+no more,remove_from_cart
+that's correct,confirm_yes
+show my order,view_cart
+view cart,view_cart
+give me one,add_to_cart
+what does it cost,get_price
+howdy,greeting
+sup,greeting
+that sounds good,add_to_cart
+gimme a,add_to_cart
+order a,add_to_cart
+i want a large,add_to_cart
+update the,modify_item
+can you modify,modify_item
+yes please,add_to_cart
+yup,confirm_yes
+never mind,confirm_no
+my order,view_cart
+reset cart,clear_cart
+remove one,remove_from_cart
+how much,get_price
+show me options,search_menu
+clear my order,clear_cart
+that's all bye,goodbye
+something without meat,query_item
+show me commands,help
+negative,confirm_no
+put it in,add_to_cart
+never mind the,remove_from_cart
+nothing else,checkout
+check my order,view_cart
+make that,modify_item
+place my order,checkout
+ready to pay,checkout
+what are my options,help
+cancel my order,clear_cart
+do you still have,query_item
+give me two,add_to_cart
+list all,search_menu
+current order,view_cart
+show sections,search_menu
+bye bye,goodbye
+choices for,query_item
+add three,add_to_cart
+any recommendations,search_menu
+that will be all,checkout
+see ya,goodbye
+delete everything,clear_cart
+yeah,confirm_yes
+i don't understand,help
+list the,search_menu
+how does this work,help
+forget about the,remove_from_cart
+confirmed,confirm_yes
+instructions,help
+clear the cart,clear_cart
+is there,query_item
+uh huh,confirm_yes
+cost of,get_price
+can i get two,add_to_cart
+complete my order,checkout
+that'll be all,checkout
+have a good day,goodbye
+list,search_menu
+ready to order,checkout
+can you make that,query_item
+give me the menu,view_menu
+what's in my order,view_cart
+do you sell,query_item
+can i see the menu,view_menu
+i'm ready,checkout
+i don't want that,remove_from_cart
+good afternoon,greeting
+hi,greeting
+a medium one,add_to_cart
+gotta go,goodbye
+wait,confirm_no
+what are my options,search_menu
+options for,query_item
+finalize,checkout
+add some,add_to_cart
+can i get one,add_to_cart
+definitely,confirm_yes
+what do you serve,query_item
+let me start over,clear_cart
+i want to see the menu,view_menu
+the price,get_price
+checkout,checkout
+menu,search_menu
+start over,clear_cart
+three please,add_to_cart
+what have i ordered,view_cart
+throw in a,add_to_cart
+clear my cart,clear_cart
+forget the,remove_from_cart
+confirm,confirm_yes
+add the,add_to_cart
+show me everything,search_menu
+price please,get_price
+display menu,view_menu
+bring up the menu,view_menu
+make it large,add_to_cart
+show my cart,view_cart
+i'm out,goodbye
+i'm confused,help
+see menu,view_menu
+actually no,confirm_no
+is that on the menu,query_item
+do you have,query_item
+goodbye,goodbye
+open menu,view_menu
+help,help
+sure,confirm_yes
+do you have a,query_item
+hi there,greeting
+not now,confirm_no
+i'd like a,add_to_cart
+good morning,greeting
+what's on the menu,search_menu
+how much does,get_price
+cancel that,remove_from_cart
+how about,query_item
+review my order,view_cart
+what can you do,help
+of course,confirm_yes
+finish order,checkout
+ok,confirm_yes
+what kinds do you have,query_item
+remove everything,clear_cart
+could i get a,add_to_cart
+total please,get_price
+actually make it,modify_item
+do you have vegan,query_item
+what about,query_item
+make it small,add_to_cart
+give me a,add_to_cart
+give me the,add_to_cart
+remove the,remove_from_cart
+how much for,get_price
+i want a small,add_to_cart
+empty the cart,clear_cart
+how do i order,help
+i want to pay,checkout
+a large one,add_to_cart
+mm hmm,confirm_yes
+add it,add_to_cart
+something like,query_item
+any gluten free options,query_item
+list everything,search_menu
+you got it,confirm_yes
+can i have the,add_to_cart
+gimme the,add_to_cart
+that's it,checkout

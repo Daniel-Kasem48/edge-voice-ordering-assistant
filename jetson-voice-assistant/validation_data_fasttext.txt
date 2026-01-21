@@ -1,0 +1,94 @@
+__label__get_price price for mozzarella sticks
+__label__add_to_cart i want two cake
+__label__confirm_no not that
+__label__query_item anything new
+__label__get_price how much is the ice cream
+__label__add_to_cart throw in a cheese pizza
+__label__confirm_yes for sure
+__label__add_to_cart medium cake
+__label__add_to_cart give me nachos
+__label__add_to_cart i want a large bbq chicken pizza
+__label__modify_item can i get cheesecake dairy free
+__label__view_cart order so far
+__label__add_to_cart give me 2 bbq chicken pizza
+__label__add_to_cart i'd like a cake
+__label__add_to_cart give me two brownie
+__label__goodbye have a good one
+__label__add_to_cart i'll have soda
+__label__add_to_cart can i have a oj
+__label__view_cart my order
+__label__checkout check out
+__label__confirm_no wait no
+__label__query_item got hawaiian pizza
+__label__checkout done ordering
+__label__get_price cost of latte
+__label__search_menu what modifiers do you have
+__label__add_to_cart add 2 cake
+__label__modify_item modify that
+__label__add_to_cart can i get brownie
+__label__help guide
+__label__add_to_cart can i get onion rings
+__label__query_item can i get brownie here
+__label__search_menu show me drinks
+__label__view_menu menu options
+__label__goodbye thank you bye
+__label__add_to_cart i want two cheeseburger
+__label__remove_from_cart actually no margherita
+__label__modify_item make it spicy
+__label__checkout complete my order
+__label__view_cart what's in my cart
+__label__confirm_no not that one
+__label__goodbye have a nice day
+__label__view_menu read me the menu
+__label__checkout finish order
+__label__remove_from_cart remove bbq chicken pizza from my order
+__label__confirm_yes do it
+__label__remove_from_cart delete that
+__label__add_to_cart i'll have onion rings
+__label__checkout submit my order
+__label__get_price how much
+__label__view_menu check menu
+__label__search_menu pull up the menu
+__label__view_menu i want to see the menu
+__label__get_price cost of mozzarella sticks
+__label__add_to_cart small chips
+__label__view_cart tell me my order
+__label__search_menu show the menu
+__label__view_cart check my order
+__label__confirm_yes you got it
+__label__goodbye thanks bye
+__label__clear_cart clear cart
+__label__add_to_cart small please
+__label__modify_item can i customize
+__label__remove_from_cart no coleslaw
+__label__greeting hello how are you
+__label__add_to_cart gimme a nachos
+__label__query_item do you have any modifiers
+__label__search_menu food options
+__label__help teach me
+__label__confirm_yes that's correct
+__label__add_to_cart i want a large rings
+__label__remove_from_cart get rid of the hawaiian
+__label__search_menu list menu_items
+__label__checkout finalize order
+__label__greeting greetings
+__label__view_menu bring up menu
+__label__search_menu show me desserts
+__label__add_to_cart gimme cheese pizza
+__label__add_to_cart add chocolate cake to cart
+__label__search_menu modifiers menu
+__label__clear_cart new order
+__label__goodbye take care
+__label__add_to_cart large more pepperoni
+__label__add_to_cart add two cheese pizza
+__label__confirm_yes totally
+__label__modify_item make cola extra cheese
+__label__confirm_no don't add that
+__label__search_menu what can i order
+__label__checkout ring me up
+__label__view_cart view cart
+__label__add_to_cart i want bbq chicken pizza
+__label__clear_cart fresh start
+__label__get_price what's caesar cost
+__label__confirm_no no thank you
+__label__get_price how much is a caesar

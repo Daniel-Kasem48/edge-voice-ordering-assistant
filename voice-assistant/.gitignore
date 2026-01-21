@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Models
+models/*.bin
+models/*.gguf
+models/*.onnx
+models/**/*.bin
+models/**/*.gguf
+models/**/*.onnx
+
+# Libraries
+lib/whisper.cpp/
+lib/llama.cpp/
+
+# Data
+*.db
+recordings/
+*.wav
+*.mp3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Config
+.env
+config/local.yaml

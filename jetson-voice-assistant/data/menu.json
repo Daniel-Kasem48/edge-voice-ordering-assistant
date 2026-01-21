@@ -1,0 +1,471 @@
+{
+  "tenant_id": "demo_restaurant",
+  "tenant_name": "Demo Restaurant",
+  "wake_word": "jarvis",
+  "language": "en",
+  "menu_items": [
+    {
+      "id": "1",
+      "name": "Margherita Pizza",
+      "category": "pizza",
+      "price": 12.99,
+      "synonyms": [
+        "margherita",
+        "cheese pizza",
+        "plain pizza"
+      ],
+      "description": "Classic pizza with tomato sauce and mozzarella",
+      "options": []
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni Pizza",
+      "category": "pizza",
+      "price": 14.99,
+      "synonyms": [
+        "pepperoni"
+      ],
+      "description": "Pizza with pepperoni and cheese",
+      "options": []
+    },
+    {
+      "id": "3",
+      "name": "BBQ Chicken Pizza",
+      "category": "pizza",
+      "price": 15.99,
+      "synonyms": [
+        "bbq pizza",
+        "chicken pizza"
+      ],
+      "description": "Pizza with BBQ sauce and chicken",
+      "options": []
+    },
+    {
+      "id": "4",
+      "name": "Hawaiian Pizza",
+      "category": "pizza",
+      "price": 13.99,
+      "synonyms": [
+        "hawaiian",
+        "pineapple pizza"
+      ],
+      "description": "Pizza with ham and pineapple",
+      "options": []
+    },
+    {
+      "id": "10",
+      "name": "Caesar Salad",
+      "category": "salad",
+      "price": 7.99,
+      "synonyms": [
+        "caesar",
+        "salad"
+      ],
+      "description": "Fresh romaine lettuce with caesar dressing",
+      "options": []
+    },
+    {
+      "id": "11",
+      "name": "Greek Salad",
+      "category": "salad",
+      "price": 8.99,
+      "synonyms": [
+        "greek",
+        "mediterranean salad"
+      ],
+      "description": "Fresh salad with feta cheese and olives",
+      "options": []
+    },
+    {
+      "id": "12",
+      "name": "Garden Salad",
+      "category": "salad",
+      "price": 6.99,
+      "synonyms": [
+        "garden",
+        "house salad",
+        "side salad"
+      ],
+      "description": "Fresh mixed greens",
+      "options": []
+    },
+    {
+      "id": "20",
+      "name": "Cheeseburger",
+      "category": "burger",
+      "price": 11.99,
+      "synonyms": [
+        "burger",
+        "cheeseburger",
+        "hamburger"
+      ],
+      "description": "Beef burger with cheese",
+      "options": []
+    },
+    {
+      "id": "21",
+      "name": "Bacon Burger",
+      "category": "burger",
+      "price": 13.99,
+      "synonyms": [
+        "bacon burger"
+      ],
+      "description": "Burger with bacon and cheese",
+      "options": []
+    },
+    {
+      "id": "22",
+      "name": "Veggie Burger",
+      "category": "burger",
+      "price": 10.99,
+      "synonyms": [
+        "veggie",
+        "vegetarian burger"
+      ],
+      "description": "Plant-based burger patty",
+      "options": []
+    },
+    {
+      "id": "30",
+      "name": "Chicken Wings",
+      "category": "appetizer",
+      "price": 9.99,
+      "synonyms": [
+        "wings",
+        "buffalo wings",
+        "chicken"
+      ],
+      "description": "Crispy chicken wings",
+      "options": []
+    },
+    {
+      "id": "31",
+      "name": "Mozzarella Sticks",
+      "category": "appetizer",
+      "price": 7.99,
+      "synonyms": [
+        "mozzarella",
+        "cheese sticks"
+      ],
+      "description": "Fried mozzarella cheese sticks",
+      "options": []
+    },
+    {
+      "id": "32",
+      "name": "Onion Rings",
+      "category": "appetizer",
+      "price": 6.99,
+      "synonyms": [
+        "onion rings",
+        "rings"
+      ],
+      "description": "Crispy fried onion rings",
+      "options": []
+    },
+    {
+      "id": "33",
+      "name": "Nachos",
+      "category": "appetizer",
+      "price": 8.99,
+      "synonyms": [
+        "nachos",
+        "chips"
+      ],
+      "description": "Tortilla chips with cheese and toppings",
+      "options": []
+    },
+    {
+      "id": "40",
+      "name": "French Fries",
+      "category": "sides",
+      "price": 4.99,
+      "synonyms": [
+        "fries",
+        "chips",
+        "french fries"
+      ],
+      "description": "Golden french fries",
+      "options": []
+    },
+    {
+      "id": "41",
+      "name": "Sweet Potato Fries",
+      "category": "sides",
+      "price": 5.99,
+      "synonyms": [
+        "sweet fries",
+        "sweet potato"
+      ],
+      "description": "Crispy sweet potato fries",
+      "options": []
+    },
+    {
+      "id": "42",
+      "name": "Coleslaw",
+      "category": "sides",
+      "price": 3.99,
+      "synonyms": [
+        "coleslaw",
+        "slaw"
+      ],
+      "description": "Creamy coleslaw",
+      "options": []
+    },
+    {
+      "id": "50",
+      "name": "Coffee",
+      "category": "drink",
+      "price": 3.5,
+      "synonyms": [
+        "coffee",
+        "java"
+      ],
+      "description": "Hot brewed coffee",
+      "options": [
+        {
+          "id": "opt_size",
+          "name": "Size",
+          "type": "single_choice",
+          "is_mandatory": true,
+          "min_selection": 1,
+          "max_selection": 1,
+          "option_values": [
+            {
+              "id": "val_small",
+              "name": "Small",
+              "price": 0.0,
+              "is_default": true
+            },
+            {
+              "id": "val_medium",
+              "name": "Medium",
+              "price": 1.0,
+              "is_default": false
+            },
+            {
+              "id": "val_large",
+              "name": "Large",
+              "price": 2.0,
+              "is_default": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "name": "Latte",
+      "category": "drink",
+      "price": 4.99,
+      "synonyms": [
+        "latte",
+        "cafe latte"
+      ],
+      "description": "Espresso with steamed milk",
+      "options": []
+    },
+    {
+      "id": "52",
+      "name": "Cappuccino",
+      "category": "drink",
+      "price": 4.5,
+      "synonyms": [
+        "cappuccino",
+        "cap"
+      ],
+      "description": "Espresso with foamed milk",
+      "options": []
+    },
+    {
+      "id": "53",
+      "name": "Iced Tea",
+      "category": "drink",
+      "price": 2.5,
+      "synonyms": [
+        "tea",
+        "iced tea",
+        "cold tea"
+      ],
+      "description": "Refreshing iced tea",
+      "options": []
+    },
+    {
+      "id": "54",
+      "name": "Coca Cola",
+      "category": "drink",
+      "price": 2.0,
+      "synonyms": [
+        "coke",
+        "cola",
+        "soda"
+      ],
+      "description": "Classic Coca-Cola",
+      "options": []
+    },
+    {
+      "id": "55",
+      "name": "Sprite",
+      "category": "drink",
+      "price": 2.0,
+      "synonyms": [
+        "sprite",
+        "lemon soda"
+      ],
+      "description": "Lemon-lime soda",
+      "options": []
+    },
+    {
+      "id": "56",
+      "name": "Orange Juice",
+      "category": "drink",
+      "price": 3.5,
+      "synonyms": [
+        "oj",
+        "orange juice",
+        "juice"
+      ],
+      "description": "Fresh orange juice",
+      "options": []
+    },
+    {
+      "id": "60",
+      "name": "Chocolate Cake",
+      "category": "dessert",
+      "price": 6.99,
+      "synonyms": [
+        "cake",
+        "chocolate",
+        "chocolate cake"
+      ],
+      "description": "Rich chocolate cake",
+      "options": []
+    },
+    {
+      "id": "61",
+      "name": "Cheesecake",
+      "category": "dessert",
+      "price": 7.99,
+      "synonyms": [
+        "cheesecake"
+      ],
+      "description": "Creamy New York cheesecake",
+      "options": []
+    },
+    {
+      "id": "62",
+      "name": "Ice Cream",
+      "category": "dessert",
+      "price": 4.99,
+      "synonyms": [
+        "ice cream",
+        "icecream"
+      ],
+      "description": "Two scoops of ice cream",
+      "options": []
+    },
+    {
+      "id": "63",
+      "name": "Brownie",
+      "category": "dessert",
+      "price": 5.99,
+      "synonyms": [
+        "brownie",
+        "chocolate brownie"
+      ],
+      "description": "Fudgy chocolate brownie",
+      "options": []
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "mod_large",
+      "name": "Large",
+      "category": "size",
+      "synonyms": [
+        "large",
+        "big"
+      ],
+      "price_adjustment": 2.0
+    },
+    {
+      "id": "mod_small",
+      "name": "Small",
+      "category": "size",
+      "synonyms": [
+        "small",
+        "little"
+      ],
+      "price_adjustment": -1.0
+    },
+    {
+      "id": "mod_extra_shot",
+      "name": "Extra Shot",
+      "category": "addon",
+      "synonyms": [
+        "extra shot",
+        "double shot"
+      ],
+      "price_adjustment": 1.5
+    }
+  ],
+  "toppings": [
+    {
+      "id": "top_cheese",
+      "name": "Extra Cheese",
+      "category": "cheese",
+      "synonyms": [
+        "extra cheese",
+        "more cheese"
+      ],
+      "price": 1.5
+    },
+    {
+      "id": "top_pepperoni",
+      "name": "Extra Pepperoni",
+      "category": "meat",
+      "synonyms": [
+        "extra pepperoni",
+        "more pepperoni"
+      ],
+      "price": 2.0
+    },
+    {
+      "id": "top_mushrooms",
+      "name": "Mushrooms",
+      "category": "vegetable",
+      "synonyms": [
+        "mushrooms",
+        "shrooms"
+      ],
+      "price": 1.0
+    },
+    {
+      "id": "top_olives",
+      "name": "Olives",
+      "category": "vegetable",
+      "synonyms": [
+        "olives",
+        "black olives"
+      ],
+      "price": 1.0
+    },
+    {
+      "id": "top_bacon",
+      "name": "Bacon",
+      "category": "meat",
+      "synonyms": [
+        "bacon"
+      ],
+      "price": 2.5
+    }
+  ],
+  "categories": [
+    "pizza",
+    "salad",
+    "burger",
+    "appetizer",
+    "sides",
+    "drink",
+    "dessert"
+  ]
+}

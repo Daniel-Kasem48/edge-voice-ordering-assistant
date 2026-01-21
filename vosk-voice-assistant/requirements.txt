@@ -1,0 +1,23 @@
+# Core audio
+numpy>=1.26.0
+sounddevice>=0.4.6
+
+# Speech Recognition - Vosk
+vosk==0.3.45
+
+# TTS - Piper
+piper-tts>=1.2.0
+onnxruntime>=1.17.0
+
+# LLM support (for voice_assistant_llm.py)
+requests>=2.31.0  # For Ollama API
+openai>=1.0.0     # For OpenAI (optional)
+
+# Tiny LLM for edge devices (for voice_assistant_edge.py)
+transformers>=4.36.0
+torch>=2.0.0
+accelerate>=0.25.0
+bitsandbytes>=0.41.0  # For 4-bit quantization
+pyyaml==6.0.1
+python-dotenv==1.0.0
+requests==2.31.0

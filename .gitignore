@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+test_*.py
+*_test.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.db
+*.sqlite
+faiss_data/
+learning_data/expansion_cache.json
+learning_data/user_feedback.jsonl
+
+# Node.js / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn/
+
+# Docker
+.dockerignore
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Local development
+quick_test.py
+test_*.py
+configure_*.py
+*_demo.py
+example_*.json
+realistic_*.json
+# Voice Assistant Models (large files)
+**/models/*.bin
+**/models/*.onnx
+**/models/*.mdl
+**/models/*.fst
+**/models/vosk-model-*/
+**/models/piper/

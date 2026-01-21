@@ -1,0 +1,531 @@
+__label__greeting hi
+__label__get_price how much for sweet fries
+__label__query_item is there a large
+__label__get_price sweet fries cost
+__label__modify_item dressing on the side
+__label__clear_cart cancel everything
+__label__remove_from_cart delete sprite
+__label__clear_cart clear my cart
+__label__confirm_no nevermind
+__label__add_to_cart let me get a nachos
+__label__checkout confirm my order
+__label__query_item do you have modifiers
+__label__query_item what toppings do you have
+__label__query_item tell me about ice cream
+__label__query_item is there a bbq chicken pizza
+__label__view_menu open menu
+__label__confirm_no don't add it
+__label__add_to_cart add a mushrooms
+__label__remove_from_cart take off the margherita
+__label__query_item tell me about house salad
+__label__query_item describe the bbq chicken pizza
+__label__remove_from_cart take off hawaiian
+__label__add_to_cart i'm craving large
+__label__search_menu what's available
+__label__greeting hey how's it going
+__label__query_item do you have any menu_items
+__label__modify_item can i get chocolate cake no mayo
+__label__confirm_no not really
+__label__query_item do you have vegan options
+__label__view_cart review order
+__label__modify_item substitute fries
+__label__add_to_cart i'll take a soda
+__label__query_item what about bbq chicken pizza
+__label__query_item do you have a more cheese
+__label__help help
+__label__get_price how much would nachos be
+__label__query_item do you still have nachos
+__label__add_to_cart add a small
+__label__query_item do you sell vegetarian burger
+__label__add_to_cart i'd like a more pepperoni
+__label__add_to_cart i'll have the chocolate cake
+__label__view_cart cart summary
+__label__search_menu see everything
+__label__confirm_yes perfect
+__label__add_to_cart i want a small cheeseburger
+__label__modify_item i want cheese sticks with milk
+__label__add_to_cart order rings
+__label__search_menu show me snacks
+__label__confirm_yes absolutely
+__label__clear_cart let me start over
+__label__confirm_no incorrect
+__label__add_to_cart add house salad to my order
+__label__help what commands are there
+__label__confirm_no no i said
+__label__view_menu menu
+__label__modify_item change the size
+__label__search_menu let me see the menu
+__label__add_to_cart two cheeseburgers
+__label__add_to_cart a large small
+__label__search_menu show me your menu
+__label__add_to_cart i need oj
+__label__checkout ready to pay
+__label__add_to_cart i want a large small
+__label__get_price what does sprite cost
+__label__add_to_cart hook me up with a chips
+__label__view_menu what's the menu
+__label__add_to_cart i want 2 house salad
+__label__add_to_cart give me a large
+__label__add_to_cart medium more pepperoni
+__label__checkout that'll be all
+__label__view_menu menu please
+__label__add_to_cart i want two brownie
+__label__goodbye bye bye
+__label__add_to_cart i want 2 soda
+__label__search_menu show me menu_items
+__label__remove_from_cart cancel bbq chicken pizza
+__label__remove_from_cart cancel the nachos
+__label__remove_from_cart get rid of the vegetarian burger
+__label__confirm_yes go ahead
+__label__add_to_cart i'd like rings
+__label__add_to_cart i'll have the onion rings
+__label__query_item is the large available
+__label__search_menu browse menu
+__label__confirm_no that's wrong
+__label__modify_item make it large
+__label__add_to_cart i want a small oj
+__label__search_menu what do you have
+__label__search_menu toppings options
+__label__view_cart show my cart
+__label__modify_item on the side
+__label__add_to_cart let me get a soda
+__label__checkout submit order
+__label__add_to_cart hook me up with a cake
+__label__add_to_cart gimme a bbq chicken pizza
+__label__remove_from_cart drop the sprite
+__label__add_to_cart i want a cake
+__label__add_to_cart i want a small more pepperoni
+__label__modify_item change chocolate cake to extra spicy
+__label__add_to_cart three chipss
+__label__query_item is extra shot available
+__label__remove_from_cart scratch the nachos
+__label__search_menu what toppings do you have
+__label__search_menu browse items
+__label__add_to_cart a medium onion rings
+__label__confirm_yes please do
+__label__get_price how much would latte be
+__label__search_menu list your items
+__label__add_to_cart gimme soda
+__label__help can you help
+__label__confirm_yes affirmative
+__label__query_item any toppings options
+__label__query_item do you have vegetarian options
+__label__confirm_yes yes i want that
+__label__confirm_yes of course
+__label__get_price how much is that
+__label__query_item do you sell extra shot
+__label__add_to_cart i'll have a bbq chicken pizza
+__label__view_cart what do i have so far
+__label__clear_cart delete everything
+__label__goodbye see ya
+__label__confirm_no hold on
+__label__add_to_cart i'll have mushrooms
+__label__add_to_cart add cheese pizza
+__label__search_menu modifiers options
+__label__goodbye gotta go
+__label__get_price price check
+__label__add_to_cart i want a onion rings
+__label__query_item what's good here
+__label__confirm_yes exactly
+__label__clear_cart wipe cart
+__label__add_to_cart i need cheeseburger
+__label__modify_item change that
+__label__get_price what's the price of mozzarella sticks
+__label__add_to_cart i'm craving a sweet fries
+__label__remove_from_cart remove nachos from cart
+__label__clear_cart erase order
+__label__query_item is there hawaiian pizza
+__label__checkout i'm ready to order
+__label__goodbye later
+__label__add_to_cart get me chocolate cake
+__label__get_price what's the price of a coffee
+__label__confirm_no forget it
+__label__search_menu what items do you have
+__label__add_to_cart can i have a soda
+__label__query_item what menu_items do you have
+__label__checkout that's all
+__label__add_to_cart can i get a onion rings
+__label__confirm_yes that's what i want
+__label__add_to_cart i want 2 chocolate brownie
+__label__add_to_cart one sweet fries please
+__label__confirm_yes yes
+__label__view_menu the menu
+__label__add_to_cart order a nachos
+__label__add_to_cart throw in a chocolate brownie
+__label__add_to_cart i'll have a cheese pizza
+__label__get_price what's the total
+__label__confirm_yes add it
+__label__view_cart show cart
+__label__clear_cart empty cart
+__label__add_to_cart let me get a onion rings
+__label__get_price how much is mozzarella sticks
+__label__search_menu show me food
+__label__search_menu can i see the menu
+__label__query_item do you have brownie
+__label__view_cart current order
+__label__view_cart what am i getting
+__label__remove_from_cart remove the last item
+__label__add_to_cart add chicken wings to my order
+__label__add_to_cart can i get a chips
+__label__add_to_cart i want large
+__label__query_item any modifiers options
+__label__query_item how about shrooms
+__label__view_cart order summary
+__label__add_to_cart give me two onion rings
+__label__get_price what's the price
+__label__search_menu menu_items menu
+__label__checkout that's everything
+__label__greeting good afternoon
+__label__add_to_cart make it a large small
+__label__add_to_cart give me 2 cake
+__label__checkout place my order
+__label__checkout send it
+__label__confirm_no nah
+__label__search_menu list drinks
+__label__greeting hi there
+__label__modify_item make it small
+__label__add_to_cart get me a soda
+__label__get_price how much is the mozzarella sticks
+__label__get_price how much do i owe
+__label__add_to_cart a large chocolate brownie
+__label__add_to_cart i'll have the bbq chicken pizza
+__label__checkout proceed to checkout
+__label__confirm_no i don't want that
+__label__search_menu list the menu
+__label__greeting hello
+__label__remove_from_cart cancel that
+__label__confirm_no that's not what i said
+__label__query_item what brownie do you have
+__label__checkout let's pay
+__label__query_item do you have gluten free options
+__label__add_to_cart i'll have a chips
+__label__confirm_no never mind
+__label__add_to_cart large onion rings
+__label__view_cart show order
+__label__clear_cart reset cart
+__label__confirm_no actually no
+__label__query_item any greek
+__label__confirm_no that's not right
+__label__greeting yo
+__label__add_to_cart i'm craving chocolate cake
+__label__confirm_yes sounds good
+__label__view_menu complete menu
+__label__search_menu everything you have
+__label__add_to_cart add chocolate cake
+__label__view_cart list my items
+__label__add_to_cart put a brownie in my cart
+__label__help explain
+__label__remove_from_cart delete the vegetarian burger
+__label__add_to_cart a medium house salad
+__label__query_item what's in the greek
+__label__view_cart show my order
+__label__greeting sup
+__label__get_price price of coffee
+__label__view_cart recap my order
+__label__query_item do you have toppings
+__label__add_to_cart 3 cheese pizzas
+__label__checkout finalize my order
+__label__query_item what's the special
+__label__view_cart what did i order
+__label__view_cart what have i ordered
+__label__add_to_cart let me get house salad
+__label__add_to_cart three brownies
+__label__add_to_cart order a soda
+__label__goodbye peace out
+__label__greeting hiya
+__label__add_to_cart i'd like more pepperoni
+__label__goodbye catch you later
+__label__add_to_cart mushrooms please
+__label__remove_from_cart i don't want margherita
+__label__remove_from_cart forget the nachos
+__label__query_item do you have any toppings
+__label__add_to_cart i'll take a bbq chicken pizza
+__label__add_to_cart 3 larges
+__label__remove_from_cart remove one
+__label__add_to_cart give me a chocolate brownie
+__label__add_to_cart gimme large
+__label__goodbye goodbye
+__label__add_to_cart i want a brownie
+__label__add_to_cart i'll take a house salad
+__label__remove_from_cart i don't want the margherita
+__label__goodbye bye
+__label__confirm_no forget that
+__label__add_to_cart i'd like oj
+__label__clear_cart clear my order
+__label__goodbye peace
+__label__get_price what's the price of sweet fries
+__label__confirm_yes correct
+__label__goodbye ciao
+__label__add_to_cart get me a more pepperoni
+__label__remove_from_cart take cappuccino off my order
+__label__search_menu dessert options
+__label__add_to_cart brownie please
+__label__search_menu menu_items options
+__label__confirm_yes yes that's right
+__label__checkout i'm ready to pay
+__label__greeting hey there
+__label__confirm_yes confirm
+__label__view_cart review my order
+__label__checkout all done
+__label__get_price price of mozzarella sticks
+__label__get_price how much for a nachos
+__label__query_item what modifiers do you have
+__label__remove_from_cart cancel cappuccino
+__label__add_to_cart let me get cake
+__label__add_to_cart put a cheese pizza in my cart
+__label__add_to_cart give me a small
+__label__add_to_cart i'll take cheese pizza
+__label__get_price what's the damage
+__label__help show me how
+__label__confirm_yes confirmed
+__label__add_to_cart i want chocolate brownie
+__label__add_to_cart i need a cheeseburger
+__label__help how do i order
+__label__add_to_cart large cheeseburger
+__label__modify_item swap the sides
+__label__help what can i say
+__label__add_to_cart add small to cart
+__label__add_to_cart i'd like a chocolate cake
+__label__query_item what's popular
+__label__search_menu what menu_items do you have
+__label__add_to_cart gimme a soda
+__label__query_item do you offer large
+__label__remove_from_cart no nachos
+__label__search_menu show menu
+__label__clear_cart i want to start over
+__label__query_item what's in the ice cream
+__label__remove_from_cart scratch the vegetarian burger
+__label__query_item got any vegetarian burger
+__label__modify_item extra cheese please
+__label__get_price what do i owe
+__label__query_item tell me about the hawaiian pizza
+__label__remove_from_cart take off cappuccino
+__label__remove_from_cart i don't want that
+__label__checkout pay now
+__label__help can you help me
+__label__greeting hey
+__label__remove_from_cart remove cappuccino from cart
+__label__search_menu what do you serve
+__label__clear_cart cancel my order
+__label__add_to_cart two sweet friess
+__label__checkout i'm done
+__label__confirm_no i changed my mind
+__label__view_menu view menu
+__label__view_cart view order
+__label__goodbye that's all bye
+__label__search_menu list modifiers
+__label__add_to_cart can i get a oj
+__label__query_item do you offer bacon burger
+__label__query_item is greek on the menu
+__label__add_to_cart make it a large cheeseburger
+__label__add_to_cart can i have oj
+__label__add_to_cart make it a large rings
+__label__search_menu show me modifiers
+__label__add_to_cart put a chocolate cake in my cart
+__label__get_price how much is sprite
+__label__query_item show me menu_items
+__label__confirm_yes definitely
+__label__add_to_cart add small to my order
+__label__query_item got any menu_items
+__label__search_menu show me toppings
+__label__query_item do you have a large
+__label__query_item do you have more cheese
+__label__add_to_cart one mushrooms please
+__label__query_item got any modifiers
+__label__remove_from_cart forget the margherita
+__label__search_menu drinks please
+__label__get_price what does a cap cost
+__label__add_to_cart order cake
+__label__search_menu show me the menu
+__label__add_to_cart i'll take chicken wings
+__label__search_menu list all items
+__label__confirm_yes ok
+__label__clear_cart begin again
+__label__add_to_cart 3 more pepperonis
+__label__query_item tell me about the brownie
+__label__view_cart what do i have
+__label__add_to_cart add a sweet fries
+__label__get_price price for cap
+__label__query_item what about shrooms
+__label__confirm_yes yes add it
+__label__clear_cart start fresh
+__label__remove_from_cart i don't want vegetarian burger
+__label__add_to_cart two smalls
+__label__clear_cart start over
+__label__add_to_cart throw in a oj
+__label__remove_from_cart remove hawaiian
+__label__add_to_cart hook me up with a soda
+__label__confirm_yes yup
+__label__confirm_no nope
+__label__view_menu see menu
+__label__clear_cart empty my cart
+__label__checkout confirm order
+__label__add_to_cart add two sweet fries
+__label__remove_from_cart take off the cappuccino
+__label__add_to_cart give me two cheese pizza
+__label__remove_from_cart remove the last one
+__label__search_menu what are my options
+__label__confirm_yes mhm
+__label__confirm_no scratch that
+__label__confirm_yes yeah
+__label__goodbye i'm done bye
+__label__add_to_cart can i have a rings
+__label__add_to_cart a large rings
+__label__confirm_yes yes please
+__label__confirm_yes right
+__label__help help me
+__label__query_item got any toppings
+__label__remove_from_cart cancel the cappuccino
+__label__view_cart my cart
+__label__help how does this work
+__label__add_to_cart order a chocolate cake
+__label__remove_from_cart remove sprite from my order
+__label__clear_cart remove everything
+__label__confirm_no no
+__label__query_item show me modifiers
+__label__clear_cart cancel order
+__label__query_item is bacon burger available
+__label__add_to_cart add 2 large
+__label__remove_from_cart remove the cappuccino
+__label__checkout i'm ready
+__label__view_menu whole menu
+__label__clear_cart clear everything
+__label__confirm_yes yep
+__label__add_to_cart get me cake
+__label__get_price total price
+__label__view_cart check order
+__label__get_price what's the price of a latte
+__label__add_to_cart add mushrooms to cart
+__label__checkout go to checkout
+__label__remove_from_cart remove a sprite
+__label__add_to_cart a small chocolate cake
+__label__checkout nothing else
+__label__search_menu all options
+__label__add_to_cart get me chicken wings
+__label__query_item do you have any chocolate cake
+__label__query_item how about greek
+__label__query_item any specials today
+__label__remove_from_cart delete the coleslaw
+__label__add_to_cart 2 house salads
+__label__query_item show me toppings
+__label__query_item what do you recommend
+__label__remove_from_cart delete coleslaw
+__label__clear_cart reset order
+__label__search_menu toppings menu
+__label__remove_from_cart remove the cappuccino
+__label__greeting hola
+__label__get_price what does a pepperoni pizza cost
+__label__add_to_cart add chips
+__label__query_item any extra shot
+__label__checkout place order
+__label__add_to_cart 2 chipss
+__label__confirm_yes sure
+__label__confirm_no negative
+__label__add_to_cart small chicken wings
+__label__add_to_cart a medium soda
+__label__remove_from_cart remove that
+__label__add_to_cart i'm craving a house salad
+__label__add_to_cart i'll take chips
+__label__goodbye see you
+__label__confirm_no nuh uh
+__label__query_item do you still have more cheese
+__label__add_to_cart give me 2 sweet fries
+__label__add_to_cart add 2 chicken wings
+__label__help i'm lost
+__label__view_menu display menu
+__label__add_to_cart medium rings
+__label__add_to_cart a small cake
+__label__remove_from_cart take that off
+__label__query_item what large do you have
+__label__view_cart what's my order
+__label__add_to_cart give me soda
+__label__query_item any menu_items options
+__label__search_menu list food
+__label__help i need help
+__label__search_menu list everything
+__label__query_item got extra shot
+__label__checkout checkout
+__label__add_to_cart get me a rings
+__label__modify_item hold the pickles
+__label__modify_item upgrade to large
+__label__goodbye i'm out
+__label__confirm_no no thanks
+__label__remove_from_cart remove a nachos
+__label__get_price latte price
+__label__query_item do you have any brownie
+__label__remove_from_cart undo that
+__label__add_to_cart one bbq chicken pizza please
+__label__confirm_yes that's right
+__label__greeting hello there
+__label__modify_item change greek to dairy free
+__label__greeting hi how are you
+__label__get_price how much for a coffee
+__label__query_item do you have menu_items
+__label__query_item describe the more cheese
+__label__search_menu all items
+__label__help i don't understand
+__label__remove_from_cart take nachos off my order
+__label__modify_item i want shrooms no onions
+__label__view_cart read back my order
+__label__add_to_cart i'm craving a cheese pizza
+__label__clear_cart clear order
+__label__clear_cart forget everything
+__label__query_item is large on the menu
+__label__confirm_no wrong
+__label__add_to_cart can i have large
+__label__add_to_cart small brownie
+__label__add_to_cart a small chips
+__label__remove_from_cart i don't want the nachos
+__label__help tutorial
+__label__add_to_cart can i get cheese pizza
+__label__checkout let's order
+__label__checkout finished ordering
+__label__help what can you do
+__label__confirm_no cancel
+__label__add_to_cart can i have house salad
+__label__get_price how much for mozzarella sticks
+__label__add_to_cart i'm craving bbq chicken pizza
+__label__add_to_cart i need soda
+__label__remove_from_cart drop the cappuccino
+__label__view_menu entire menu
+__label__add_to_cart i need a small
+__label__get_price what does coffee cost
+__label__help i'm confused
+__label__query_item can i get house salad here
+__label__search_menu what's on the menu
+__label__query_item is there chocolate cake
+__label__view_cart items in cart
+__label__search_menu list toppings
+__label__query_item is the vegetarian burger available
+__label__get_price coffee cost
+__label__add_to_cart i need a bbq chicken pizza
+__label__view_menu full menu
+__label__remove_from_cart remove bbq chicken pizza
+__label__greeting howdy
+__label__get_price how much is a coffee
+__label__get_price what's ice cream cost
+__label__confirm_yes okay
+__label__checkout complete order
+__label__help what are my options
+__label__greeting good morning
+__label__view_menu look at menu
+__label__add_to_cart order chocolate brownie
+__label__checkout finish my order
+__label__checkout wrap it up
+__label__add_to_cart add two cake
+__label__add_to_cart 2 onion ringss
+__label__add_to_cart give me house salad
+__label__modify_item make chocolate brownie no cheese
+__label__get_price what's my total
+__label__greeting good evening
+__label__remove_from_cart actually no cappuccino
+__label__confirm_no cancel that
+__label__help instructions
+__label__add_to_cart three chicken wingss
+__label__confirm_yes uh huh
+__label__greeting what's up
+__label__modify_item no onions on that
+__label__checkout that's it
+__label__get_price sprite price
+__label__add_to_cart let me get small
+__label__query_item got any house salad

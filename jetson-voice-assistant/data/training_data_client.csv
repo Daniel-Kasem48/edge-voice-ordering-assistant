@@ -1,0 +1,604 @@
+text,intent
+list my items,view_cart
+open menu,view_menu
+can i customize,modify_item
+good afternoon,greeting
+a large test available2,add_to_cart
+is qishr coffee husks 16oz available,query_item
+large sana'ani coffee,add_to_cart
+i don't want the medium roast whole beans,remove_from_cart
+i need a 6pk glass tea cup,add_to_cart
+show my order,view_cart
+what's the price of lobster risotto,get_price
+what's sabaya cost,get_price
+see everything,search_menu
+see you,goodbye
+what's my total,get_price
+three green whole beanss,add_to_cart
+do you still have qahwah house glass bottle 16oz.,query_item
+3 qahwah house glass coffee makers,add_to_cart
+dressing on the side,modify_item
+any specials today,query_item
+erase order,clear_cart
+goodbye,goodbye
+empty cart,clear_cart
+not that one,confirm_no
+show menu,search_menu
+change the size,modify_item
+look at menu,view_menu
+what's up,greeting
+what do i have,view_cart
+show cart,view_cart
+how does this work,help
+how much do i owe,get_price
+i want 2 iced brown sugar shaken espresso,add_to_cart
+yup,confirm_yes
+read me the menu,view_menu
+is the red mass wine available,query_item
+remove a turkish dark roast,remove_from_cart
+what about qishr coffee husks 16oz,query_item
+remove peppermint tea,remove_from_cart
+place order,checkout
+can i get a maple walnut latte (hot),add_to_cart
+you got it,confirm_yes
+any red mass wine,query_item
+gimme yemeni latte,add_to_cart
+not really,confirm_no
+can i have qahwah house glass coffee maker,add_to_cart
+gimme a qahwah house glass coffee maker,add_to_cart
+let me get a green whole beans,add_to_cart
+french press (qahwah house) cost,get_price
+take cloud & mist tea off my order,remove_from_cart
+can i have a toasted almond mocha latte (iced),add_to_cart
+i'm craving cloud & mist tea,add_to_cart
+a medium ginger tea,add_to_cart
+do you sell 6pk glass tea cup,query_item
+swap the sides,modify_item
+a large sana'ani coffee,add_to_cart
+cancel cloud & mist tea,remove_from_cart
+remove a fried chicken wings,remove_from_cart
+i'm craving paloma,add_to_cart
+take off lemonade,remove_from_cart
+how much for a french press (qahwah house),get_price
+delete the macchiato,remove_from_cart
+what about coffee pot aluminum,query_item
+one green whole beans please,add_to_cart
+perfect,confirm_yes
+medium sana'ani coffee,add_to_cart
+do you have a qahwah house glass bottle 16oz.,query_item
+clear my order,clear_cart
+make rada'ey no ice,modify_item
+hey there,greeting
+what's my order,view_cart
+do you sell tima drink,query_item
+what's the special,query_item
+start over,clear_cart
+undo that,remove_from_cart
+what's the price,get_price
+cost of cheese tart,get_price
+done ordering,checkout
+help me,help
+is adeni chai mix available,query_item
+okay,confirm_yes
+menu,view_menu
+scratch the medium roast whole beans,remove_from_cart
+remove stuffed chicken supreme,remove_from_cart
+delete the adeni chai mix,remove_from_cart
+got thermal jug (50oz),query_item
+can i get iced mocha,add_to_cart
+give me two iced brown sugar shaken espresso,add_to_cart
+how much is a french press (qahwah house),get_price
+check out,checkout
+i'll have a iced mocha,add_to_cart
+throw in a green whole beans,add_to_cart
+i'd like a cloud & mist tea,add_to_cart
+price for french press (qahwah house),get_price
+do it,confirm_yes
+my order,view_cart
+upgrade to large,modify_item
+finalize my order,checkout
+delete that,remove_from_cart
+let me get qahwah house glass coffee maker,add_to_cart
+do you have vegetarian options,query_item
+hold the pickles,modify_item
+extra cheese please,modify_item
+tell me about red mass wine,query_item
+teach me,help
+what do you serve,search_menu
+yes,confirm_yes
+what does a cheese tart cost,get_price
+of course,confirm_yes
+wait no,confirm_no
+review order,view_cart
+can i get a yemeni latte,add_to_cart
+let's order,checkout
+what are my options,search_menu
+3 tests,add_to_cart
+what's the total,get_price
+hook me up with a green whole beans,add_to_cart
+actually no stuffed chicken supreme,remove_from_cart
+hey how's it going,greeting
+drop the macchiato,remove_from_cart
+how much is the coffee pot base,get_price
+describe the coffee pot aluminum,query_item
+what did i order,view_cart
+do you offer 6pk glass tea cup,query_item
+what's the price of chicago pizza,get_price
+get me sana'ani coffee,add_to_cart
+can i have morning mojo,add_to_cart
+order qahwah house glass coffee maker,add_to_cart
+order so far,view_cart
+exactly,confirm_yes
+give me 2 morning mojo,add_to_cart
+large qahwah house glass coffee maker,add_to_cart
+i want 2 yemeni latte,add_to_cart
+medium yemeni latte,add_to_cart
+i don't want that,confirm_no
+price for qahwah house v60,get_price
+get rid of the peppermint tea,remove_from_cart
+i want rada'ey less ice,modify_item
+finalize order,checkout
+i don't want that,remove_from_cart
+make it a large ceramic mug (8oz),add_to_cart
+price of lobster risotto,get_price
+make it large,modify_item
+hello how are you,greeting
+confirm,confirm_yes
+let me start over,clear_cart
+list result,search_menu
+absolutely,confirm_yes
+what's in my cart,view_cart
+got any qishr,query_item
+yo,greeting
+instructions,help
+show me snacks,search_menu
+order test,add_to_cart
+pull up the menu,search_menu
+confirm order,checkout
+what tima drink do you have,query_item
+for sure,confirm_yes
+peace out,goodbye
+i'm craving morning mojo,add_to_cart
+i'll have sana'ani coffee,add_to_cart
+correct,confirm_yes
+ceramic mug (8oz) please,add_to_cart
+what do you recommend,query_item
+i want a large ginger tea,add_to_cart
+let's pay,checkout
+ready to pay,checkout
+let me get green whole beans,add_to_cart
+remove lemonade from my order,remove_from_cart
+order a ginger tea,add_to_cart
+not that,confirm_no
+price check,get_price
+what does sabaya cost,get_price
+i don't want iced americano,remove_from_cart
+what's french press (qahwah house) cost,get_price
+finished ordering,checkout
+don't add that,confirm_no
+two sana'ani coffees,add_to_cart
+show order,view_cart
+can i get tima drink here,query_item
+a large americano,add_to_cart
+list food,search_menu
+price of golden basboosa,get_price
+clear my cart,clear_cart
+how much,get_price
+is there a iced caramel macchiato,query_item
+can i have a yemeni latte,add_to_cart
+give me cloud & mist tea,add_to_cart
+what's on the menu,search_menu
+small ceramic mug (8oz),add_to_cart
+uh huh,confirm_yes
+what items do you have,search_menu
+modify that,modify_item
+2 ceramic mug (8oz)s,add_to_cart
+how about iced caramel macchiato,query_item
+see menu,view_menu
+what result do you have,query_item
+peace,goodbye
+everything you have,search_menu
+right,confirm_yes
+take off stuffed chicken supreme,remove_from_cart
+golden basboosa price,get_price
+i'd like qahwah house glass coffee maker,add_to_cart
+yes add it,confirm_yes
+go to checkout,checkout
+show me result,query_item
+can i have pour over,add_to_cart
+can i get a red mass wine,add_to_cart
+how much is qahwah house v60,get_price
+add 2 iced brown sugar shaken espresso,add_to_cart
+i want 2 morning mojo,add_to_cart
+no stuffed chicken supreme,remove_from_cart
+make it a large red mass wine,add_to_cart
+no i said,confirm_no
+i'll take a morning mojo,add_to_cart
+let me get a iced mocha,add_to_cart
+got tima drink,query_item
+i'll take a qahwah house glass coffee maker,add_to_cart
+a medium 6pk glass tea cup,add_to_cart
+delete lemonade,remove_from_cart
+get me a cloud & mist tea,add_to_cart
+add yemeni latte to cart,add_to_cart
+no thank you,confirm_no
+how about adeni chai mix,query_item
+take medium roast whole beans off my order,remove_from_cart
+what have i ordered,view_cart
+i want to see the menu,view_menu
+cancel stuffed chicken supreme,remove_from_cart
+finish my order,checkout
+give me a sana'ani coffee,add_to_cart
+reset order,clear_cart
+i need a red mass wine,add_to_cart
+small iced mocha,add_to_cart
+do you have result,query_item
+do you have any tima drink,query_item
+i want a cloud & mist tea,add_to_cart
+all options,search_menu
+that's not right,confirm_no
+bring up menu,view_menu
+i want a large americano,add_to_cart
+i need a maple walnut latte (hot),add_to_cart
+is the ceramic latte mug (qahwah house) available,query_item
+large ginger tea,add_to_cart
+any result options,query_item
+checkout,checkout
+i'm done bye,goodbye
+get me paloma,add_to_cart
+later,goodbye
+americano please,add_to_cart
+browse menu,search_menu
+can i get qahwah house glass coffee maker,add_to_cart
+i'm out,goodbye
+i'm confused,help
+hi how are you,greeting
+add green whole beans,add_to_cart
+hold on,confirm_no
+delete stuffed chicken supreme,remove_from_cart
+result options,search_menu
+i'll take a iced mocha,add_to_cart
+sup,greeting
+i want cloud & mist tea,add_to_cart
+add cloud & mist tea to my order,add_to_cart
+how much is a arabic light roast,get_price
+nevermind,confirm_no
+a medium maple walnut latte (hot),add_to_cart
+negative,confirm_no
+tell me about qishr coffee husks 16oz,query_item
+check order,view_cart
+ciao,goodbye
+cart summary,view_cart
+take care,goodbye
+give me two sana'ani coffee,add_to_cart
+i want a small maple walnut latte (hot),add_to_cart
+display menu,view_menu
+actually no,confirm_no
+what am i getting,view_cart
+can i have a cloud & mist tea,add_to_cart
+how much would french press (qahwah house) be,get_price
+complete order,checkout
+actually no macchiato,remove_from_cart
+add two yemeni latte,add_to_cart
+how much for americano,get_price
+how much is the chicago pizza,get_price
+how do i order,help
+add test available2 to cart,add_to_cart
+confirmed,confirm_yes
+fresh start,clear_cart
+change that,modify_item
+yeah,confirm_yes
+show me result,search_menu
+show me desserts,search_menu
+new order,clear_cart
+read back my order,view_cart
+i want a small test,add_to_cart
+bye bye,goodbye
+check menu,view_menu
+good morning,greeting
+what's the price of a french press (qahwah house),get_price
+2 test available2s,add_to_cart
+a small yemeni latte,add_to_cart
+forget the turkish dark roast,remove_from_cart
+i need glass tea pot,add_to_cart
+food options,search_menu
+hello,greeting
+place my order,checkout
+nope,confirm_no
+can i get golden basboosa no onions,modify_item
+cancel,confirm_no
+what toasted almond mocha latte (hot) do you have,query_item
+hi,greeting
+do you still have qishr,query_item
+wrap it up,checkout
+begin again,clear_cart
+what's in the iced americano,query_item
+confirm my order,checkout
+list drinks,search_menu
+cancel order,clear_cart
+clear cart,clear_cart
+gimme cloud & mist tea,add_to_cart
+i want meditative + ginger tea without sugar,modify_item
+i'll have ceramic mug (8oz),add_to_cart
+i'd like a yemeni latte,add_to_cart
+remove everything,clear_cart
+show me how,help
+submit order,checkout
+that'll be all,checkout
+show the menu,search_menu
+add maple walnut latte (hot) to my order,add_to_cart
+drop the cloud & mist tea,remove_from_cart
+what do you have,search_menu
+make mix cocktail no cheese,modify_item
+put a red mass wine in my cart,add_to_cart
+remove the last one,remove_from_cart
+howdy,greeting
+let me see the menu,search_menu
+substitute fries,modify_item
+remove one,remove_from_cart
+throw in a toasted almond mocha latte (iced),add_to_cart
+hola,greeting
+i'll take paloma,add_to_cart
+hiya,greeting
+what's in the qishr,query_item
+add a test,add_to_cart
+i'll have the maple walnut latte (hot),add_to_cart
+i don't want macchiato,remove_from_cart
+scratch the peppermint tea,remove_from_cart
+have a good one,goodbye
+can you help,help
+ok,confirm_yes
+do you have any result,query_item
+pay now,checkout
+got any red mass wine,query_item
+have a nice day,goodbye
+send it,checkout
+i'll have the 6pk glass tea cup,add_to_cart
+i'll have the qahwah house glass coffee maker,add_to_cart
+throw in a red mass wine,add_to_cart
+describe the red mass wine,query_item
+empty my cart,clear_cart
+add 2 ceramic mug (8oz),add_to_cart
+show me drinks,search_menu
+what do i have so far,view_cart
+order summary,view_cart
+that's wrong,confirm_no
+sounds good,confirm_yes
+two iced mochas,add_to_cart
+how much for sabaya,get_price
+remove fried chicken wings from cart,remove_from_cart
+please do,confirm_yes
+add two ceramic mug (8oz),add_to_cart
+menu please,view_menu
+nuh uh,confirm_no
+do you have any coffee pot aluminum,query_item
+can i get pour over,add_to_cart
+add glass tea pot,add_to_cart
+i'm done,checkout
+what are my options,help
+cancel that,confirm_no
+start fresh,clear_cart
+add paloma to my order,add_to_cart
+i want glass tea pot,add_to_cart
+add it,confirm_yes
+i'm ready to order,checkout
+3 ceramic mug (8oz)s,add_to_cart
+yep,confirm_yes
+current order,view_cart
+i'd like paloma,add_to_cart
+is there test,query_item
+that's right,confirm_yes
+three iced brown sugar shaken espressos,add_to_cart
+i want two yemeni latte,add_to_cart
+yemeni latte please,add_to_cart
+list the menu,search_menu
+the menu,view_menu
+scratch that,confirm_no
+what do i owe,get_price
+forget that,confirm_no
+remove macchiato from cart,remove_from_cart
+that's what i want,confirm_yes
+thanks bye,goodbye
+delete everything,clear_cart
+i'm craving a red mass wine,add_to_cart
+cancel that,remove_from_cart
+i changed my mind,confirm_no
+go ahead,confirm_yes
+coffee pot base cost,get_price
+two maple walnut latte (hot)s,add_to_cart
+yes please,confirm_yes
+remove the cloud & mist tea,remove_from_cart
+sure,confirm_yes
+give me 2 toasted almond mocha latte (iced),add_to_cart
+gimme green whole beans,add_to_cart
+tutorial,help
+show me food,search_menu
+forget the adeni chai mix,remove_from_cart
+order a 6pk glass tea cup,add_to_cart
+order a ceramic mug (8oz),add_to_cart
+complete my order,checkout
+entire menu,view_menu
+hey,greeting
+add qahwah house glass coffee maker,add_to_cart
+how much is golden basboosa,get_price
+drinks please,search_menu
+i want to start over,clear_cart
+i'll have a pour over,add_to_cart
+add ginger tea to cart,add_to_cart
+view order,view_cart
+add 2 red mass wine,add_to_cart
+give me americano,add_to_cart
+add two 6pk glass tea cup,add_to_cart
+i want a large red mass wine,add_to_cart
+all done,checkout
+how much for a coffee pot base,get_price
+yes i want that,confirm_yes
+can you help me,help
+i'd like ceramic mug (8oz),add_to_cart
+that's not what i said,confirm_no
+do you have tima drink,query_item
+check my order,view_cart
+i want a yemeni latte,add_to_cart
+no,confirm_no
+submit my order,checkout
+don't add it,confirm_no
+gimme a ceramic mug (8oz),add_to_cart
+change caramel macchiato to gluten free,modify_item
+can i get iced americano here,query_item
+affirmative,confirm_yes
+hook me up with a iced mocha,add_to_cart
+remove the turkish dark roast,remove_from_cart
+what's the damage,get_price
+no medium roast whole beans,remove_from_cart
+what does golden basboosa cost,get_price
+a small glass tea pot,add_to_cart
+take off the turkish dark roast,remove_from_cart
+how much would cheese tart be,get_price
+i'll take yemeni latte,add_to_cart
+what result do you have,search_menu
+let me get morning mojo,add_to_cart
+nothing else,checkout
+all items,search_menu
+give me two maple walnut latte (hot),add_to_cart
+cancel everything,clear_cart
+how much is that,get_price
+make it small,modify_item
+i want a pour over,add_to_cart
+list everything,search_menu
+help,help
+what's popular,query_item
+a small pour over,add_to_cart
+forget it,confirm_no
+is there ceramic latte mug (qahwah house),query_item
+i don't want the iced americano,remove_from_cart
+finish order,checkout
+give me 2 qahwah house glass coffee maker,add_to_cart
+i'm ready,checkout
+incorrect,confirm_no
+total price,get_price
+remove the last item,remove_from_cart
+one paloma please,add_to_cart
+forget everything,clear_cart
+yes that's right,confirm_yes
+i want 6pk glass tea cup,add_to_cart
+definitely,confirm_yes
+view cart,view_cart
+i want two paloma,add_to_cart
+bye,goodbye
+what can i order,search_menu
+that's correct,confirm_yes
+is iced mango matcha on the menu,query_item
+do you offer iced caramel macchiato,query_item
+never mind,confirm_no
+review my order,view_cart
+wrong,confirm_no
+that's all bye,goodbye
+no thanks,confirm_no
+hello there,greeting
+take off the adeni chai mix,remove_from_cart
+i need red mass wine,add_to_cart
+i'll take iced brown sugar shaken espresso,add_to_cart
+cost of sabaya,get_price
+give me a ceramic mug (8oz),add_to_cart
+i'm ready to pay,checkout
+good evening,greeting
+totally,confirm_yes
+result menu,search_menu
+get me a red mass wine,add_to_cart
+2 iced mochas,add_to_cart
+any qahwah house glass bottle 16oz.,query_item
+tell me about the qishr coffee husks 16oz,query_item
+tell me my order,view_cart
+gotta go,goodbye
+sabaya price,get_price
+what's the menu,view_menu
+browse items,search_menu
+explain,help
+full menu,view_menu
+medium morning mojo,add_to_cart
+make it spicy,modify_item
+proceed to checkout,checkout
+mhm,confirm_yes
+do you have gluten free options,query_item
+cancel the fried chicken wings,remove_from_cart
+do you have vegan options,query_item
+order morning mojo,add_to_cart
+whole menu,view_menu
+ring me up,checkout
+cancel the turkish dark roast,remove_from_cart
+what can i say,help
+list your items,search_menu
+one yemeni latte please,add_to_cart
+get rid of the cloud & mist tea,remove_from_cart
+show me the menu,search_menu
+view menu,view_menu
+that's it,checkout
+on the side,modify_item
+do you have a coffee pot aluminum,query_item
+guide,help
+is there a ceramic latte mug (qahwah house),query_item
+get me pour over,add_to_cart
+complete menu,view_menu
+got any result,query_item
+clear everything,clear_cart
+wipe cart,clear_cart
+do you have iced mango matcha,query_item
+reset cart,clear_cart
+can i get adeni chai mix with milk,modify_item
+i need help,help
+see ya,goodbye
+i'm craving a toasted almond mocha latte (iced),add_to_cart
+what can you do,help
+gimme a ginger tea,add_to_cart
+recap my order,view_cart
+list all items,search_menu
+i'll have test available2,add_to_cart
+get me a glass tea pot,add_to_cart
+is tima drink on the menu,query_item
+clear order,clear_cart
+items in cart,view_cart
+i need ginger tea,add_to_cart
+that's all,checkout
+i want two glass tea pot,add_to_cart
+hi there,greeting
+no onions on that,modify_item
+i'll have a glass tea pot,add_to_cart
+menu options,view_menu
+take that off,remove_from_cart
+cancel my order,clear_cart
+hook me up with a test available2,add_to_cart
+that's everything,checkout
+put a ginger tea in my cart,add_to_cart
+i don't understand,help
+remove fried chicken wings from my order,remove_from_cart
+anything new,query_item
+i want a small sana'ani coffee,add_to_cart
+catch you later,goodbye
+remove that,remove_from_cart
+what commands are there,help
+make it a large qahwah house glass coffee maker,add_to_cart
+i'd like a toasted almond mocha latte (iced),add_to_cart
+my cart,view_cart
+change iced pistachio latte to no onions,modify_item
+show me your menu,search_menu
+what's the price of a sabaya,get_price
+i'm lost,help
+tell me about the adeni chai mix,query_item
+thank you bye,goodbye
+give me test available2,add_to_cart
+nah,confirm_no
+what's available,search_menu
+what's good here,query_item
+put a sana'ani coffee in my cart,add_to_cart
+add a qahwah house glass coffee maker,add_to_cart
+add a sana'ani coffee,add_to_cart
+what does a qahwah house v60 cost,get_price
+let me get a ceramic mug (8oz),add_to_cart
+greetings,greeting
+i'm craving a americano,add_to_cart
+small morning mojo,add_to_cart
+can i see the menu,search_menu
+dessert options,search_menu
+show my cart,view_cart
+give me a cloud & mist tea,add_to_cart
+three 6pk glass tea cups,add_to_cart

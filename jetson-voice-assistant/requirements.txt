@@ -1,0 +1,31 @@
+# Jetson Orin Nano Voice Assistant Requirements
+# Text-only mode for testing
+
+# Core dependencies (required)
+rapidfuzz>=3.6.1      # Fuzzy menu matching
+pyyaml>=6.0.1         # Configuration files
+numpy>=1.24.0         # Numerical operations
+
+# Optional: Intent Classification (for production)
+# fasttext-wheel>=0.9.2   # Use fasttext-wheel for ARM64
+
+# =============================================================================
+# AUDIO DEPENDENCIES (uncomment for voice mode)
+# =============================================================================
+# Wake Word Detection
+# pvporcupine>=3.0.2
+
+# Audio Processing
+# pyaudio>=0.2.14
+# sounddevice>=0.4.6
+# soundfile>=0.12.1
+# webrtcvad>=2.0.10
+
+# Speech-to-Text (whisper.cpp - build from source for Jetson)
+# faster-whisper>=0.10.0  # Alternative Python-native whisper
+
+# Text-to-Speech
+# piper-tts>=1.2.0
+
+# Optional: ONNX Runtime for BERT intent classification
+# onnxruntime-gpu>=1.16.0  # For Jetson, use: pip install onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/

@@ -1,0 +1,22 @@
+# Lightweight Intent Model Requirements
+# For testing on Manjaro laptop and Jetson deployment
+
+# FastText - Lightweight and fast text classification
+fasttext-wheel>=0.9.2
+
+# DistilBERT - Lighter version of BERT
+transformers>=4.36.0
+torch>=2.1.0
+accelerate>=0.25.0
+
+# Model optimization
+onnx>=1.15.0
+onnxruntime>=1.16.0
+
+# Training utilities
+scikit-learn>=1.3.0
+pandas>=2.1.0
+matplotlib>=3.7.0
+
+# Optional: For quantization and optimization
+optimum>=1.16.0

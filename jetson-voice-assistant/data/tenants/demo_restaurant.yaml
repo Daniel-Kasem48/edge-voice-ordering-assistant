@@ -1,0 +1,11 @@
+tenant_info:
+  id: demo_restaurant
+  name: Demo Restaurant
+  language: en-US
+  currency: USD
+
+wake_word:
+  phrase: jarvis
+  sensitivity: 0.5
+
+menu_json_path: menu.json

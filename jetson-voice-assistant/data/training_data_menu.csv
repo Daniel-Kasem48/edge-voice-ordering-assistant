@@ -1,0 +1,626 @@
+text,intent
+cancel that,remove_from_cart
+thank you bye,goodbye
+don't add it,confirm_no
+hey,greeting
+make chocolate brownie no cheese,modify_item
+scratch the vegetarian burger,remove_from_cart
+what's good here,query_item
+catch you later,goodbye
+yup,confirm_yes
+remove the last item,remove_from_cart
+what commands are there,help
+can i get a onion rings,add_to_cart
+entire menu,view_menu
+how much,get_price
+order so far,view_cart
+get me a soda,add_to_cart
+take off cappuccino,remove_from_cart
+i need a cheeseburger,add_to_cart
+i'm craving chocolate cake,add_to_cart
+brownie please,add_to_cart
+view cart,view_cart
+teach me,help
+large onion rings,add_to_cart
+what's the total,get_price
+i want two brownie,add_to_cart
+hey there,greeting
+view order,view_cart
+no onions on that,modify_item
+what does coffee cost,get_price
+hook me up with a cake,add_to_cart
+show me your menu,search_menu
+do you have modifiers,query_item
+three chicken wingss,add_to_cart
+hello,greeting
+what's in my cart,view_cart
+i need a small,add_to_cart
+see menu,view_menu
+is greek on the menu,query_item
+cancel the cappuccino,remove_from_cart
+cart summary,view_cart
+i'd like a cake,add_to_cart
+good morning,greeting
+what items do you have,search_menu
+wrong,confirm_no
+let's order,checkout
+got any vegetarian burger,query_item
+do you have toppings,query_item
+instructions,help
+i don't want that,remove_from_cart
+i'm craving large,add_to_cart
+can i get a oj,add_to_cart
+full menu,view_menu
+my order,view_cart
+negative,confirm_no
+price of coffee,get_price
+what toppings do you have,query_item
+i want 2 house salad,add_to_cart
+what's the damage,get_price
+hello how are you,greeting
+give me two cheese pizza,add_to_cart
+is the large available,query_item
+can i get cheese pizza,add_to_cart
+throw in a cheese pizza,add_to_cart
+any toppings options,query_item
+can i get cheesecake dairy free,modify_item
+what can you do,help
+that's all,checkout
+do you have a large,query_item
+make it small,modify_item
+remove one,remove_from_cart
+get rid of the vegetarian burger,remove_from_cart
+i want bbq chicken pizza,add_to_cart
+yes i want that,confirm_yes
+can i have a soda,add_to_cart
+what do i have,view_cart
+nah,confirm_no
+open menu,view_menu
+clear my cart,clear_cart
+absolutely,confirm_yes
+i'll have a cheese pizza,add_to_cart
+make it spicy,modify_item
+how much would latte be,get_price
+bye bye,goodbye
+the menu,view_menu
+order summary,view_cart
+can i have house salad,add_to_cart
+see everything,search_menu
+large more pepperoni,add_to_cart
+a large chocolate brownie,add_to_cart
+actually no,confirm_no
+tell me about ice cream,query_item
+remove bbq chicken pizza from my order,remove_from_cart
+list drinks,search_menu
+3 cheese pizzas,add_to_cart
+gimme a soda,add_to_cart
+i need a bbq chicken pizza,add_to_cart
+get me cake,add_to_cart
+go to checkout,checkout
+good evening,greeting
+new order,clear_cart
+do you still have more cheese,query_item
+drop the sprite,remove_from_cart
+how much is a caesar,get_price
+3 more pepperonis,add_to_cart
+exactly,confirm_yes
+show me drinks,search_menu
+fresh start,clear_cart
+can i have large,add_to_cart
+what did i order,view_cart
+gimme soda,add_to_cart
+do you have any menu_items,query_item
+remove the last one,remove_from_cart
+what large do you have,query_item
+give me a small,add_to_cart
+wipe cart,clear_cart
+hello there,greeting
+reset cart,clear_cart
+proceed to checkout,checkout
+do you sell extra shot,query_item
+what about shrooms,query_item
+change greek to dairy free,modify_item
+what can i order,search_menu
+how about greek,query_item
+clear everything,clear_cart
+forget that,confirm_no
+what does a pepperoni pizza cost,get_price
+let me get cake,add_to_cart
+read back my order,view_cart
+medium cake,add_to_cart
+a medium soda,add_to_cart
+modifiers menu,search_menu
+describe the bbq chicken pizza,query_item
+help,help
+i don't want the nachos,remove_from_cart
+what's up,greeting
+let me see the menu,search_menu
+remove a nachos,remove_from_cart
+can i see the menu,search_menu
+how much is the ice cream,get_price
+empty my cart,clear_cart
+hold on,confirm_no
+dessert options,search_menu
+can i get house salad here,query_item
+total price,get_price
+everything you have,search_menu
+let me get a nachos,add_to_cart
+no,confirm_no
+is bacon burger available,query_item
+take off hawaiian,remove_from_cart
+bye,goodbye
+a large rings,add_to_cart
+got extra shot,query_item
+order cake,add_to_cart
+send it,checkout
+cancel cappuccino,remove_from_cart
+do you have vegetarian options,query_item
+give me 2 bbq chicken pizza,add_to_cart
+make it a large cheeseburger,add_to_cart
+i want 2 soda,add_to_cart
+drop the cappuccino,remove_from_cart
+get rid of the hawaiian,remove_from_cart
+can i get brownie,add_to_cart
+forget the margherita,remove_from_cart
+delete sprite,remove_from_cart
+i'm out,goodbye
+empty cart,clear_cart
+cost of mozzarella sticks,get_price
+sup,greeting
+one mushrooms please,add_to_cart
+finished ordering,checkout
+i'm confused,help
+checkout,checkout
+menu_items options,search_menu
+i'll take cheese pizza,add_to_cart
+show my cart,view_cart
+show me modifiers,search_menu
+what am i getting,view_cart
+what's the price of a coffee,get_price
+okay,confirm_yes
+what's my order,view_cart
+do you offer large,query_item
+do you sell vegetarian burger,query_item
+any greek,query_item
+any specials today,query_item
+what about bbq chicken pizza,query_item
+peace,goodbye
+i'm craving bbq chicken pizza,add_to_cart
+i'll have soda,add_to_cart
+gotta go,goodbye
+small please,add_to_cart
+add small to cart,add_to_cart
+finalize order,checkout
+i want a large small,add_to_cart
+what does a cap cost,get_price
+show me menu_items,query_item
+let me get house salad,add_to_cart
+give me a large,add_to_cart
+do you have any brownie,query_item
+order a chocolate cake,add_to_cart
+yes,confirm_yes
+uh huh,confirm_yes
+modify that,modify_item
+delete the coleslaw,remove_from_cart
+scratch the nachos,remove_from_cart
+how much do i owe,get_price
+complete my order,checkout
+finish my order,checkout
+two smalls,add_to_cart
+i want cheese sticks with milk,modify_item
+make it large,modify_item
+a large small,add_to_cart
+see ya,goodbye
+sweet fries cost,get_price
+show me food,search_menu
+make cola extra cheese,modify_item
+is there a large,query_item
+can i have a oj,add_to_cart
+give me house salad,add_to_cart
+i want a cake,add_to_cart
+small chicken wings,add_to_cart
+cancel bbq chicken pizza,remove_from_cart
+is the vegetarian burger available,query_item
+confirmed,confirm_yes
+2 chipss,add_to_cart
+all items,search_menu
+view menu,view_menu
+list all items,search_menu
+affirmative,confirm_yes
+add cheese pizza,add_to_cart
+do you offer bacon burger,query_item
+sprite price,get_price
+please do,confirm_yes
+that's right,confirm_yes
+get me a rings,add_to_cart
+do you have any toppings,query_item
+that'll be all,checkout
+what's on the menu,search_menu
+can i have oj,add_to_cart
+can i get a chips,add_to_cart
+check order,view_cart
+remove bbq chicken pizza,remove_from_cart
+submit my order,checkout
+how much for mozzarella sticks,get_price
+you got it,confirm_yes
+i want 2 chocolate brownie,add_to_cart
+how much for a nachos,get_price
+show me toppings,query_item
+make it a large small,add_to_cart
+that's not right,confirm_no
+i'll take a house salad,add_to_cart
+let me get a soda,add_to_cart
+got hawaiian pizza,query_item
+food options,search_menu
+confirm order,checkout
+get me chicken wings,add_to_cart
+large cheeseburger,add_to_cart
+review order,view_cart
+can i get chocolate cake no mayo,modify_item
+one bbq chicken pizza please,add_to_cart
+no i said,confirm_no
+order rings,add_to_cart
+i'll take a soda,add_to_cart
+yeah,confirm_yes
+list modifiers,search_menu
+a medium house salad,add_to_cart
+confirm my order,checkout
+yes please,confirm_yes
+medium rings,add_to_cart
+how about shrooms,query_item
+add 2 cake,add_to_cart
+what's caesar cost,get_price
+is extra shot available,query_item
+menu please,view_menu
+i want to see the menu,view_menu
+change chocolate cake to extra spicy,modify_item
+delete the vegetarian burger,remove_from_cart
+list menu_items,search_menu
+i don't want the margherita,remove_from_cart
+i'll take a bbq chicken pizza,add_to_cart
+nothing else,checkout
+i want chocolate brownie,add_to_cart
+add house salad to my order,add_to_cart
+how much for a coffee,get_price
+cancel,confirm_no
+a medium onion rings,add_to_cart
+forget everything,clear_cart
+tell me about house salad,query_item
+finalize my order,checkout
+price for mozzarella sticks,get_price
+recap my order,view_cart
+later,goodbye
+give me two onion rings,add_to_cart
+i want a small more pepperoni,add_to_cart
+all options,search_menu
+display menu,view_menu
+wait no,confirm_no
+what have i ordered,view_cart
+can i have a rings,add_to_cart
+list my items,view_cart
+place my order,checkout
+what's the menu,view_menu
+submit order,checkout
+goodbye,goodbye
+add two sweet fries,add_to_cart
+erase order,clear_cart
+show cart,view_cart
+hold the pickles,modify_item
+how does this work,help
+add chocolate cake to cart,add_to_cart
+drinks please,search_menu
+what do i have so far,view_cart
+change the size,modify_item
+what's the price,get_price
+that's correct,confirm_yes
+list everything,search_menu
+check menu,view_menu
+correct,confirm_yes
+no thanks,confirm_no
+i want a small cheeseburger,add_to_cart
+extra cheese please,modify_item
+menu_items menu,search_menu
+hi there,greeting
+price of mozzarella sticks,get_price
+2 house salads,add_to_cart
+a small chocolate cake,add_to_cart
+i'm ready,checkout
+i need soda,add_to_cart
+what do you serve,search_menu
+i changed my mind,confirm_no
+forget the nachos,remove_from_cart
+totally,confirm_yes
+swap the sides,modify_item
+that's what i want,confirm_yes
+what brownie do you have,query_item
+substitute fries,modify_item
+do you still have nachos,query_item
+how much is mozzarella sticks,get_price
+check out,checkout
+what's in the ice cream,query_item
+do it,confirm_yes
+list your items,search_menu
+sounds good,confirm_yes
+sure,confirm_yes
+gimme cheese pizza,add_to_cart
+let me start over,clear_cart
+i'll have onion rings,add_to_cart
+i'd like a chocolate cake,add_to_cart
+i want shrooms no onions,modify_item
+remove the cappuccino,remove_from_cart
+show me how,help
+on the side,modify_item
+how much is a coffee,get_price
+got any modifiers,query_item
+add small to my order,add_to_cart
+remove cappuccino from cart,remove_from_cart
+show me the menu,search_menu
+i want to start over,clear_cart
+go ahead,confirm_yes
+undo that,remove_from_cart
+help me,help
+do you have gluten free options,query_item
+ok,confirm_yes
+start over,clear_cart
+throw in a chocolate brownie,add_to_cart
+hiya,greeting
+i'll take chicken wings,add_to_cart
+finish order,checkout
+what's in the greek,query_item
+add a mushrooms,add_to_cart
+i'll have the onion rings,add_to_cart
+remove hawaiian,remove_from_cart
+remove a sprite,remove_from_cart
+take care,goodbye
+i need help,help
+let's pay,checkout
+show menu,search_menu
+do you have menu_items,query_item
+all done,checkout
+got any house salad,query_item
+have a good one,goodbye
+how much is the mozzarella sticks,get_price
+i'll have the chocolate cake,add_to_cart
+of course,confirm_yes
+throw in a oj,add_to_cart
+describe the more cheese,query_item
+greetings,greeting
+add 2 chicken wings,add_to_cart
+pull up the menu,search_menu
+complete menu,view_menu
+menu options,view_menu
+add it,confirm_yes
+not that,confirm_no
+wrap it up,checkout
+two sweet friess,add_to_cart
+what's the price of a latte,get_price
+take off the margherita,remove_from_cart
+mhm,confirm_yes
+add two cake,add_to_cart
+browse menu,search_menu
+i'm ready to order,checkout
+do you have any chocolate cake,query_item
+can i get onion rings,add_to_cart
+add chips,add_to_cart
+that's everything,checkout
+how do i order,help
+that's wrong,confirm_no
+actually no cappuccino,remove_from_cart
+add chicken wings to my order,add_to_cart
+i want large,add_to_cart
+confirm,confirm_yes
+latte price,get_price
+nope,confirm_no
+modifiers options,search_menu
+bring up menu,view_menu
+i'd like more pepperoni,add_to_cart
+is there hawaiian pizza,query_item
+i don't want that,confirm_no
+three chipss,add_to_cart
+i want two cake,add_to_cart
+mushrooms please,add_to_cart
+what's the special,query_item
+browse items,search_menu
+yes add it,confirm_yes
+what do i owe,get_price
+hola,greeting
+take off the cappuccino,remove_from_cart
+tell me about the brownie,query_item
+have a nice day,goodbye
+remove nachos from cart,remove_from_cart
+i'm craving a house salad,add_to_cart
+i don't want margherita,remove_from_cart
+nuh uh,confirm_no
+remove everything,clear_cart
+scratch that,confirm_no
+two cheeseburgers,add_to_cart
+no thank you,confirm_no
+show my order,view_cart
+hey how's it going,greeting
+give me 2 sweet fries,add_to_cart
+gimme large,add_to_cart
+tutorial,help
+list the menu,search_menu
+delete coleslaw,remove_from_cart
+can you help,help
+order a nachos,add_to_cart
+clear order,clear_cart
+toppings menu,search_menu
+hi,greeting
+add chocolate cake,add_to_cart
+place order,checkout
+what do you have,search_menu
+take that off,remove_from_cart
+i'll have a chips,add_to_cart
+add mushrooms to cart,add_to_cart
+read me the menu,view_menu
+cost of latte,get_price
+add 2 large,add_to_cart
+give me soda,add_to_cart
+add two cheese pizza,add_to_cart
+i want a large rings,add_to_cart
+complete order,checkout
+done ordering,checkout
+what's the price of sweet fries,get_price
+any extra shot,query_item
+upgrade to large,modify_item
+i'd like oj,add_to_cart
+don't add that,confirm_no
+do you have more cheese,query_item
+my cart,view_cart
+i want a onion rings,add_to_cart
+hi how are you,greeting
+for sure,confirm_yes
+begin again,clear_cart
+forget it,confirm_no
+gimme a nachos,add_to_cart
+can i customize,modify_item
+can i get brownie here,query_item
+i need cheeseburger,add_to_cart
+hook me up with a soda,add_to_cart
+show order,view_cart
+dressing on the side,modify_item
+review my order,view_cart
+ready to pay,checkout
+a small chips,add_to_cart
+tell me my order,view_cart
+how much for sweet fries,get_price
+i'll take chips,add_to_cart
+how much would nachos be,get_price
+list food,search_menu
+let me get small,add_to_cart
+yes that's right,confirm_yes
+show me desserts,search_menu
+give me two brownie,add_to_cart
+take cappuccino off my order,remove_from_cart
+what's the price of mozzarella sticks,get_price
+take nachos off my order,remove_from_cart
+change that,modify_item
+i want a brownie,add_to_cart
+anything new,query_item
+yo,greeting
+any menu_items options,query_item
+a small cake,add_to_cart
+cancel that,confirm_no
+is there chocolate cake,query_item
+check my order,view_cart
+clear my order,clear_cart
+give me 2 cake,add_to_cart
+start fresh,clear_cart
+not that one,confirm_no
+what does sprite cost,get_price
+no coleslaw,remove_from_cart
+3 larges,add_to_cart
+i'd like rings,add_to_cart
+show me snacks,search_menu
+price check,get_price
+cancel everything,clear_cart
+reset order,clear_cart
+order a soda,add_to_cart
+that's all bye,goodbye
+i'm done bye,goodbye
+i want a large bbq chicken pizza,add_to_cart
+2 onion ringss,add_to_cart
+i'll have the bbq chicken pizza,add_to_cart
+put a chocolate cake in my cart,add_to_cart
+yep,confirm_yes
+definitely,confirm_yes
+small brownie,add_to_cart
+nevermind,confirm_no
+howdy,greeting
+i'm ready to pay,checkout
+how much is sprite,get_price
+show me toppings,search_menu
+what are my options,search_menu
+explain,help
+what toppings do you have,search_menu
+medium more pepperoni,add_to_cart
+what's ice cream cost,get_price
+i'm done,checkout
+right,confirm_yes
+what modifiers do you have,query_item
+items in cart,view_cart
+what menu_items do you have,query_item
+order chocolate brownie,add_to_cart
+show me menu_items,search_menu
+that's it,checkout
+current order,view_cart
+what are my options,help
+what's popular,query_item
+one sweet fries please,add_to_cart
+remove the cappuccino,remove_from_cart
+got any toppings,query_item
+what menu_items do you have,search_menu
+cancel order,clear_cart
+what's my total,get_price
+do you have a more cheese,query_item
+guide,help
+incorrect,confirm_no
+is there a bbq chicken pizza,query_item
+get me chocolate cake,add_to_cart
+toppings options,search_menu
+do you have any modifiers,query_item
+actually no margherita,remove_from_cart
+clear cart,clear_cart
+do you have brownie,query_item
+delete that,remove_from_cart
+coffee cost,get_price
+thanks bye,goodbye
+see you,goodbye
+i'm craving a sweet fries,add_to_cart
+can you help me,help
+gimme a bbq chicken pizza,add_to_cart
+whole menu,view_menu
+what do you recommend,query_item
+i'll have mushrooms,add_to_cart
+get me a more pepperoni,add_to_cart
+is large on the menu,query_item
+remove that,remove_from_cart
+look at menu,view_menu
+not really,confirm_no
+i need oj,add_to_cart
+delete everything,clear_cart
+i want two cheeseburger,add_to_cart
+never mind,confirm_no
+how much is that,get_price
+i'll have a bbq chicken pizza,add_to_cart
+list toppings,search_menu
+i don't want vegetarian burger,remove_from_cart
+remove sprite from my order,remove_from_cart
+hook me up with a chips,add_to_cart
+cancel my order,clear_cart
+put a brownie in my cart,add_to_cart
+i don't understand,help
+cancel the nachos,remove_from_cart
+show me modifiers,query_item
+i want a small oj,add_to_cart
+peace out,goodbye
+no nachos,remove_from_cart
+what can i say,help
+make it a large rings,add_to_cart
+i'd like a more pepperoni,add_to_cart
+menu,view_menu
+price for cap,get_price
+got any menu_items,query_item
+pay now,checkout
+i'm lost,help
+tell me about the hawaiian pizza,query_item
+good afternoon,greeting
+give me nachos,add_to_cart
+perfect,confirm_yes
+show the menu,search_menu
+any modifiers options,query_item
+put a cheese pizza in my cart,add_to_cart
+add a small,add_to_cart
+add a sweet fries,add_to_cart
+ring me up,checkout
+ciao,goodbye
+let me get a onion rings,add_to_cart
+that's not what i said,confirm_no
+i'm craving a cheese pizza,add_to_cart
+small chips,add_to_cart
+do you have vegan options,query_item
+what's available,search_menu
+what modifiers do you have,search_menu
+give me a chocolate brownie,add_to_cart
+three brownies,add_to_cart
