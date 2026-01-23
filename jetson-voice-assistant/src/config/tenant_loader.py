@@ -44,6 +44,8 @@ class MenuItem:
     category: str
     synonyms: List[str] = field(default_factory=list)  # aliases in YAML
     description: str = ""
+    tags: List[str] = field(default_factory=list)  # dietary/meal tags (vegetarian, breakfast, etc.)
+    ingredients: List[str] = field(default_factory=list)  # ingredients list for queries
     default_toppings: List[str] = field(default_factory=list)
     sizes: List[str] = field(default_factory=list)
     flavors: List[str] = field(default_factory=list)
@@ -208,6 +210,8 @@ class TenantLoader:
                 category=item.get('category', ''),
                 synonyms=item.get('synonyms', []),
                 description=item.get('description', ''),
+                tags=item.get('tags', []),
+                ingredients=item.get('ingredients', []),
                 options=options
             ))
         
@@ -288,6 +292,8 @@ class TenantLoader:
                     category=item.get('category', category),
                     synonyms=item.get('aliases', []),
                     description=item.get('description', ''),
+                    tags=item.get('tags', []),
+                    ingredients=item.get('ingredients', []),
                     default_toppings=item.get('default_toppings', []),
                     sizes=item.get('sizes', []),
                     flavors=item.get('flavors', [])

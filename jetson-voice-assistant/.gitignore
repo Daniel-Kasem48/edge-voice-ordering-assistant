@@ -1,3 +1,37 @@
+# Python
 venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Models (must be generated locally)
 models/*.bin
 *.bin
+models/*.onnx
+models/piper/*.onnx
+models/piper/*.json
+
+# Training artifacts
+*.model
+*.vec
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local

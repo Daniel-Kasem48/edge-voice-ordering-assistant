@@ -1,94 +1,106 @@
-__label__get_price price for mozzarella sticks
-__label__add_to_cart i want two cake
-__label__confirm_no not that
-__label__query_item anything new
-__label__get_price how much is the ice cream
-__label__add_to_cart throw in a cheese pizza
-__label__confirm_yes for sure
-__label__add_to_cart medium cake
-__label__add_to_cart give me nachos
-__label__add_to_cart i want a large bbq chicken pizza
-__label__modify_item can i get cheesecake dairy free
-__label__view_cart order so far
-__label__add_to_cart give me 2 bbq chicken pizza
-__label__add_to_cart i'd like a cake
-__label__add_to_cart give me two brownie
-__label__goodbye have a good one
-__label__add_to_cart i'll have soda
-__label__add_to_cart can i have a oj
-__label__view_cart my order
-__label__checkout check out
-__label__confirm_no wait no
-__label__query_item got hawaiian pizza
-__label__checkout done ordering
-__label__get_price cost of latte
-__label__search_menu what modifiers do you have
-__label__add_to_cart add 2 cake
-__label__modify_item modify that
-__label__add_to_cart can i get brownie
-__label__help guide
-__label__add_to_cart can i get onion rings
-__label__query_item can i get brownie here
-__label__search_menu show me drinks
-__label__view_menu menu options
-__label__goodbye thank you bye
-__label__add_to_cart i want two cheeseburger
-__label__remove_from_cart actually no margherita
-__label__modify_item make it spicy
+__label__view_cart show my cart
+__label__query_ingredients what's in it
+__label__query_item got any modifiers
+__label__clear_cart i want to start over
 __label__checkout complete my order
-__label__view_cart what's in my cart
-__label__confirm_no not that one
-__label__goodbye have a nice day
-__label__view_menu read me the menu
-__label__checkout finish order
-__label__remove_from_cart remove bbq chicken pizza from my order
-__label__confirm_yes do it
-__label__remove_from_cart delete that
-__label__add_to_cart i'll have onion rings
-__label__checkout submit my order
-__label__get_price how much
-__label__view_menu check menu
-__label__search_menu pull up the menu
-__label__view_menu i want to see the menu
-__label__get_price cost of mozzarella sticks
-__label__add_to_cart small chips
-__label__view_cart tell me my order
-__label__search_menu show the menu
-__label__view_cart check my order
+__label__add_to_cart can i have a juice
+__label__get_price how much is the cheeseburger
+__label__search_menu toppings options
+__label__add_to_cart add extra cheese to cart
+__label__greeting hello
 __label__confirm_yes you got it
-__label__goodbye thanks bye
-__label__clear_cart clear cart
-__label__add_to_cart small please
-__label__modify_item can i customize
-__label__remove_from_cart no coleslaw
-__label__greeting hello how are you
-__label__add_to_cart gimme a nachos
-__label__query_item do you have any modifiers
-__label__search_menu food options
-__label__help teach me
-__label__confirm_yes that's correct
-__label__add_to_cart i want a large rings
-__label__remove_from_cart get rid of the hawaiian
+__label__query_ingredients what ingredients does small have
+__label__add_to_cart can i get a cold tea
+__label__add_to_cart i'll have the house salad
+__label__modify_item change hawaiian to less ice
+__label__confirm_no nope
+__label__confirm_yes yes
+__label__search_menu what's available
+__label__query_item is there a chocolate
+__label__query_item show me toppings
+__label__confirm_yes sure
+__label__query_ingredients what is in the extra cheese
+__label__confirm_no not that
+__label__confirm_yes yeah
+__label__add_to_cart a large greek salad
+__label__remove_from_cart take off soda
+__label__greeting hi
+__label__add_to_cart i need a cheesecake
+__label__view_cart order summary
+__label__get_price price of tea
+__label__checkout done ordering
+__label__add_to_cart give me a sprite
+__label__modify_item make it large
+__label__modify_item modify that
+__label__query_ingredients does black olives have meat
+__label__confirm_yes yup
+__label__add_to_cart i want a small cheesecake
+__label__greeting hey
+__label__add_to_cart throw in a sweet potato
+__label__confirm_no i don't want that
+__label__add_to_cart add house salad
+__label__checkout let's pay
+__label__add_to_cart i'll have a cheesecake
+__label__query_item got any iced tea
+__label__greeting good afternoon
+__label__query_item got iced tea
+__label__confirm_no nuh uh
+__label__remove_from_cart actually no small
+__label__query_item do you still have small
+__label__query_ingredients what's in the extra cheese
+__label__view_menu open menu
+__label__query_ingredients show me the cappuccino ingredients
+__label__add_to_cart medium juice
+__label__add_to_cart i want chocolate brownie
+__label__confirm_no forget that
+__label__query_ingredients ingredients in coca cola
+__label__query_item do you sell small
+__label__query_ingredients what ingredients does the iced tea have
+__label__query_ingredients the coleslaw ingredients
+__label__add_to_cart add sprite
+__label__query_item do you have menu_items
+__label__confirm_no never mind
+__label__query_item do you have vegan options
+__label__view_menu menu options
+__label__add_to_cart i'll have the oj
+__label__query_item any menu_items options
+__label__add_to_cart add two french fries
+__label__add_to_cart make it a large garden salad
+__label__add_to_cart i want a small double shot
+__label__checkout that'll be all
+__label__add_to_cart i want 2 cold tea
+__label__goodbye ciao
+__label__clear_cart clear everything
+__label__greeting hey how's it going
+__label__goodbye catch you later
+__label__get_price how much is a pepperoni pizza
+__label__checkout i'm ready
+__label__query_item what sweet potato do you have
+__label__get_price price for chips
+__label__query_item do you have gluten free options
+__label__add_to_cart 3 margheritas
+__label__remove_from_cart forget the pepperoni
+__label__remove_from_cart i don't want coke
+__label__add_to_cart add two oj
+__label__greeting hola
+__label__add_to_cart add 2 iced tea
+__label__query_item is latte available
+__label__add_to_cart can i have greek salad
+__label__add_to_cart hook me up with a cheese sticks
+__label__query_ingredients show ingredients
+__label__add_to_cart put a sweet potato in my cart
+__label__get_price price for coffee
+__label__query_ingredients what is mozzarella made from
+__label__remove_from_cart no caesar salad
+__label__greeting hey there
 __label__search_menu list menu_items
-__label__checkout finalize order
-__label__greeting greetings
-__label__view_menu bring up menu
-__label__search_menu show me desserts
-__label__add_to_cart gimme cheese pizza
-__label__add_to_cart add chocolate cake to cart
-__label__search_menu modifiers menu
-__label__clear_cart new order
-__label__goodbye take care
-__label__add_to_cart large more pepperoni
-__label__add_to_cart add two cheese pizza
-__label__confirm_yes totally
-__label__modify_item make cola extra cheese
-__label__confirm_no don't add that
-__label__search_menu what can i order
-__label__checkout ring me up
-__label__view_cart view cart
-__label__add_to_cart i want bbq chicken pizza
-__label__clear_cart fresh start
-__label__get_price what's caesar cost
-__label__confirm_no no thank you
-__label__get_price how much is a caesar
+__label__search_menu modifiers options
+__label__remove_from_cart remove soda
+__label__search_menu what do you have
+__label__query_item what's popular
+__label__query_item is the soda available
+__label__add_to_cart get me chocolate brownie
+__label__add_to_cart add oj to cart
+__label__query_ingredients what ingredients
+__label__add_to_cart gimme sweet potato
+__label__add_to_cart let me get juice

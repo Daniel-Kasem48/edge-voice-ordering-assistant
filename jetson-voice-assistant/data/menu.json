@@ -15,7 +15,19 @@
         "plain pizza"
       ],
       "description": "Classic pizza with tomato sauce and mozzarella",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "lunch",
+        "dinner"
+      ],
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella cheese",
+        "fresh basil",
+        "olive oil"
+      ]
     },
     {
       "id": "2",
@@ -26,7 +38,18 @@
         "pepperoni"
       ],
       "description": "Pizza with pepperoni and cheese",
-      "options": []
+      "options": [],
+      "tags": [
+        "lunch",
+        "dinner",
+        "popular"
+      ],
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella cheese",
+        "pepperoni"
+      ]
     },
     {
       "id": "3",
@@ -38,7 +61,19 @@
         "chicken pizza"
       ],
       "description": "Pizza with BBQ sauce and chicken",
-      "options": []
+      "options": [],
+      "tags": [
+        "lunch",
+        "dinner"
+      ],
+      "ingredients": [
+        "pizza dough",
+        "BBQ sauce",
+        "mozzarella cheese",
+        "grilled chicken",
+        "red onion",
+        "cilantro"
+      ]
     },
     {
       "id": "4",
@@ -50,7 +85,18 @@
         "pineapple pizza"
       ],
       "description": "Pizza with ham and pineapple",
-      "options": []
+      "options": [],
+      "tags": [
+        "lunch",
+        "dinner"
+      ],
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella cheese",
+        "ham",
+        "pineapple"
+      ]
     },
     {
       "id": "10",
@@ -62,7 +108,20 @@
         "salad"
       ],
       "description": "Fresh romaine lettuce with caesar dressing",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "healthy",
+        "gluten-free",
+        "lunch",
+        "light"
+      ],
+      "ingredients": [
+        "romaine lettuce",
+        "parmesan cheese",
+        "croutons",
+        "caesar dressing"
+      ]
     },
     {
       "id": "11",
@@ -74,7 +133,23 @@
         "mediterranean salad"
       ],
       "description": "Fresh salad with feta cheese and olives",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "healthy",
+        "gluten-free",
+        "lunch",
+        "light"
+      ],
+      "ingredients": [
+        "cucumber",
+        "tomatoes",
+        "red onion",
+        "feta cheese",
+        "olives",
+        "olive oil",
+        "oregano"
+      ]
     },
     {
       "id": "12",
@@ -87,7 +162,22 @@
         "side salad"
       ],
       "description": "Fresh mixed greens",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "healthy",
+        "gluten-free",
+        "lunch",
+        "light"
+      ],
+      "ingredients": [
+        "mixed greens",
+        "tomatoes",
+        "cucumber",
+        "carrots",
+        "ranch dressing"
+      ]
     },
     {
       "id": "20",
@@ -100,7 +190,23 @@
         "hamburger"
       ],
       "description": "Beef burger with cheese",
-      "options": []
+      "options": [],
+      "tags": [
+        "lunch",
+        "dinner",
+        "popular"
+      ],
+      "ingredients": [
+        "beef patty",
+        "american cheese",
+        "lettuce",
+        "tomato",
+        "onion",
+        "pickles",
+        "burger bun",
+        "ketchup",
+        "mustard"
+      ]
     },
     {
       "id": "21",
@@ -111,7 +217,21 @@
         "bacon burger"
       ],
       "description": "Burger with bacon and cheese",
-      "options": []
+      "options": [],
+      "tags": [
+        "lunch",
+        "dinner"
+      ],
+      "ingredients": [
+        "beef patty",
+        "bacon",
+        "cheddar cheese",
+        "lettuce",
+        "tomato",
+        "onion",
+        "burger bun",
+        "mayo"
+      ]
     },
     {
       "id": "22",
@@ -123,7 +243,23 @@
         "vegetarian burger"
       ],
       "description": "Plant-based burger patty",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "healthy",
+        "lunch",
+        "dinner"
+      ],
+      "ingredients": [
+        "veggie patty",
+        "lettuce",
+        "tomato",
+        "onion",
+        "pickles",
+        "burger bun",
+        "mustard"
+      ]
     },
     {
       "id": "30",
@@ -136,7 +272,21 @@
         "chicken"
       ],
       "description": "Crispy chicken wings",
-      "options": []
+      "options": [],
+      "tags": [
+        "gluten-free",
+        "spicy",
+        "lunch",
+        "dinner",
+        "popular"
+      ],
+      "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "celery",
+        "blue cheese dressing"
+      ]
     },
     {
       "id": "31",
@@ -148,7 +298,17 @@
         "cheese sticks"
       ],
       "description": "Fried mozzarella cheese sticks",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "snack"
+      ],
+      "ingredients": [
+        "mozzarella cheese",
+        "breading",
+        "vegetable oil",
+        "marinara sauce"
+      ]
     },
     {
       "id": "32",
@@ -160,7 +320,18 @@
         "rings"
       ],
       "description": "Crispy fried onion rings",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "snack"
+      ],
+      "ingredients": [
+        "onion",
+        "batter",
+        "vegetable oil",
+        "salt"
+      ]
     },
     {
       "id": "33",
@@ -172,7 +343,21 @@
         "chips"
       ],
       "description": "Tortilla chips with cheese and toppings",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "gluten-free",
+        "snack",
+        "popular"
+      ],
+      "ingredients": [
+        "tortilla chips",
+        "cheddar cheese",
+        "jalapenos",
+        "sour cream",
+        "salsa",
+        "guacamole"
+      ]
     },
     {
       "id": "40",
@@ -185,7 +370,18 @@
         "french fries"
       ],
       "description": "Golden french fries",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "gluten-free",
+        "snack"
+      ],
+      "ingredients": [
+        "potatoes",
+        "vegetable oil",
+        "salt"
+      ]
     },
     {
       "id": "41",
@@ -197,7 +393,20 @@
         "sweet potato"
       ],
       "description": "Crispy sweet potato fries",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "gluten-free",
+        "healthy",
+        "snack"
+      ],
+      "ingredients": [
+        "sweet potatoes",
+        "vegetable oil",
+        "salt",
+        "paprika"
+      ]
     },
     {
       "id": "42",
@@ -209,7 +418,19 @@
         "slaw"
       ],
       "description": "Creamy coleslaw",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "gluten-free",
+        "light"
+      ],
+      "ingredients": [
+        "cabbage",
+        "carrots",
+        "mayonnaise",
+        "vinegar",
+        "sugar"
+      ]
     },
     {
       "id": "50",
@@ -250,6 +471,17 @@
             }
           ]
         }
+      ],
+      "tags": [
+        "hot",
+        "breakfast",
+        "caffeine",
+        "sugar-free",
+        "vegan"
+      ],
+      "ingredients": [
+        "brewed coffee beans",
+        "water"
       ]
     },
     {
@@ -262,7 +494,17 @@
         "cafe latte"
       ],
       "description": "Espresso with steamed milk",
-      "options": []
+      "options": [],
+      "tags": [
+        "hot",
+        "breakfast",
+        "caffeine"
+      ],
+      "ingredients": [
+        "espresso",
+        "steamed milk",
+        "milk foam"
+      ]
     },
     {
       "id": "52",
@@ -274,7 +516,18 @@
         "cap"
       ],
       "description": "Espresso with foamed milk",
-      "options": []
+      "options": [],
+      "tags": [
+        "hot",
+        "breakfast",
+        "caffeine"
+      ],
+      "ingredients": [
+        "espresso",
+        "steamed milk",
+        "milk foam",
+        "cocoa powder"
+      ]
     },
     {
       "id": "53",
@@ -287,7 +540,18 @@
         "cold tea"
       ],
       "description": "Refreshing iced tea",
-      "options": []
+      "options": [],
+      "tags": [
+        "cold",
+        "sugar-free",
+        "vegan",
+        "refreshing"
+      ],
+      "ingredients": [
+        "brewed tea",
+        "water",
+        "lemon"
+      ]
     },
     {
       "id": "54",
@@ -300,7 +564,18 @@
         "soda"
       ],
       "description": "Classic Coca-Cola",
-      "options": []
+      "options": [],
+      "tags": [
+        "cold",
+        "soda",
+        "popular"
+      ],
+      "ingredients": [
+        "carbonated water",
+        "high fructose corn syrup",
+        "caramel color",
+        "caffeine"
+      ]
     },
     {
       "id": "55",
@@ -312,7 +587,17 @@
         "lemon soda"
       ],
       "description": "Lemon-lime soda",
-      "options": []
+      "options": [],
+      "tags": [
+        "cold",
+        "soda"
+      ],
+      "ingredients": [
+        "carbonated water",
+        "high fructose corn syrup",
+        "citric acid",
+        "lemon-lime flavor"
+      ]
     },
     {
       "id": "56",
@@ -325,7 +610,17 @@
         "juice"
       ],
       "description": "Fresh orange juice",
-      "options": []
+      "options": [],
+      "tags": [
+        "cold",
+        "healthy",
+        "breakfast",
+        "vegan",
+        "sugar-free"
+      ],
+      "ingredients": [
+        "fresh squeezed oranges"
+      ]
     },
     {
       "id": "60",
@@ -338,7 +633,20 @@
         "chocolate cake"
       ],
       "description": "Rich chocolate cake",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "sweet"
+      ],
+      "ingredients": [
+        "chocolate",
+        "flour",
+        "sugar",
+        "eggs",
+        "butter",
+        "cocoa powder",
+        "chocolate frosting"
+      ]
     },
     {
       "id": "61",
@@ -349,7 +657,20 @@
         "cheesecake"
       ],
       "description": "Creamy New York cheesecake",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "sweet",
+        "popular"
+      ],
+      "ingredients": [
+        "cream cheese",
+        "graham cracker crust",
+        "sugar",
+        "eggs",
+        "vanilla",
+        "sour cream"
+      ]
     },
     {
       "id": "62",
@@ -361,7 +682,19 @@
         "icecream"
       ],
       "description": "Two scoops of ice cream",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "sweet",
+        "cold",
+        "gluten-free"
+      ],
+      "ingredients": [
+        "milk",
+        "cream",
+        "sugar",
+        "vanilla extract"
+      ]
     },
     {
       "id": "63",
@@ -373,7 +706,19 @@
         "chocolate brownie"
       ],
       "description": "Fudgy chocolate brownie",
-      "options": []
+      "options": [],
+      "tags": [
+        "vegetarian",
+        "sweet"
+      ],
+      "ingredients": [
+        "chocolate",
+        "butter",
+        "sugar",
+        "eggs",
+        "flour",
+        "walnuts"
+      ]
     }
   ],
   "modifiers": [
@@ -467,5 +812,25 @@
     "sides",
     "drink",
     "dessert"
+  ],
+  "available_tags": [
+    "vegetarian",
+    "vegan",
+    "gluten-free",
+    "sugar-free",
+    "healthy",
+    "light",
+    "spicy",
+    "hot",
+    "cold",
+    "breakfast",
+    "lunch",
+    "dinner",
+    "snack",
+    "popular",
+    "caffeine",
+    "soda",
+    "sweet",
+    "refreshing"
   ]
 }

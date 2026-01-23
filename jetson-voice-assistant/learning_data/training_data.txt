@@ -1,0 +1,677 @@
+text,intent
+do you sell cheese pizza,query_item
+what's the total,get_price
+that's not what i said,confirm_no
+3 house salads,add_to_cart
+i'll have a bacon,add_to_cart
+what have i ordered,view_cart
+cancel the ice cream,remove_from_cart
+food options,search_menu
+i want a pineapple pizza,add_to_cart
+price for mozzarella sticks,get_price
+got brownie,query_item
+how much is pepperoni pizza,get_price
+any cold tea,query_item
+mhm,confirm_yes
+give me 2 chocolate cake,add_to_cart
+list menu_items,search_menu
+any specials today,query_item
+okay,confirm_yes
+what's french fries cost,get_price
+i'm done,checkout
+get rid of the coleslaw,remove_from_cart
+is brownie available,query_item
+remove sprite,remove_from_cart
+large hawaiian,add_to_cart
+is the double shot available,query_item
+what's my order,view_cart
+add house salad to cart,add_to_cart
+browse items,search_menu
+do you offer onion rings,query_item
+what ingredients does olives have,query_ingredients
+get me a sprite,add_to_cart
+how much do i owe,get_price
+make margherita pizza no onions,modify_item
+clear order,clear_cart
+gimme black olives,add_to_cart
+pull up the menu,search_menu
+show me the menu,search_menu
+how much for pepperoni pizza,get_price
+what does a cappuccino cost,get_price
+no greek salad,remove_from_cart
+ring me up,checkout
+modify that,modify_item
+what menu_items do you have,search_menu
+hi how are you,greeting
+get me soda,add_to_cart
+hello,greeting
+that's it,checkout
+show ingredients,query_ingredients
+hook me up with a coffee,add_to_cart
+display menu,view_menu
+three sprites,add_to_cart
+what's the price of orange juice,get_price
+what do i owe,get_price
+can i get a chocolate cake,add_to_cart
+my cart,view_cart
+i'd like a house salad,add_to_cart
+what did i order,view_cart
+my order,view_cart
+how much is a chicken pizza,get_price
+menu,view_menu
+forget it,confirm_no
+cancel,confirm_no
+i want cappuccino no onions,modify_item
+confirm order,checkout
+hola,greeting
+help me,help
+a large cola,add_to_cart
+i don't want the sprite,remove_from_cart
+pineapple pizza please,add_to_cart
+actually no,confirm_no
+list modifiers,search_menu
+i don't want that,remove_from_cart
+add cola,add_to_cart
+i'm craving bacon,add_to_cart
+i'm ready to order,checkout
+does the sprite have cheese,query_ingredients
+nope,confirm_no
+how much would caesar salad be,get_price
+hook me up with a bacon,add_to_cart
+order a house salad,add_to_cart
+add 2 black olives,add_to_cart
+cancel the sprite,remove_from_cart
+whats in the olives,query_ingredients
+never mind,confirm_no
+let me get coleslaw,add_to_cart
+ingredients in margherita,query_ingredients
+take off greek salad,remove_from_cart
+goodbye,goodbye
+list ingredients in sprite,query_ingredients
+dressing on the side,modify_item
+can i get salad,add_to_cart
+cancel everything,clear_cart
+do you have any menu_items,query_item
+show me ingredients in garden salad,query_ingredients
+can i get margherita pizza less salt,modify_item
+peace out,goodbye
+wrap it up,checkout
+yup,confirm_yes
+give me coffee,add_to_cart
+what's the price of a caesar salad,get_price
+hey how's it going,greeting
+can i get a chocolate cake,add_to_cart
+that'll be all,checkout
+throw in a bacon,add_to_cart
+a small coffee,add_to_cart
+is cheese pizza on the menu,query_item
+correct,confirm_yes
+remove extra pepperoni from my order,remove_from_cart
+show me modifiers,search_menu
+how much for orange juice,get_price
+what is in the hawaiian,query_ingredients
+i want a large cola,add_to_cart
+do you have any modifiers,query_item
+what ingredients are in hawaiian,query_ingredients
+give me a onion rings,add_to_cart
+whats in the sprite,query_ingredients
+cancel that,confirm_no
+remove the last one,remove_from_cart
+what about juice,query_item
+see everything,search_menu
+cancel coffee,remove_from_cart
+what's my total,get_price
+can i get large no mayo,modify_item
+do you have vegetarian options,query_item
+give me two soda,add_to_cart
+change the size,modify_item
+i want salad,add_to_cart
+that's what i want,confirm_yes
+menu_items menu,search_menu
+is there a pepperoni pizza,query_item
+any menu_items options,query_item
+change large to make it spicy,modify_item
+salad please,add_to_cart
+can i have icecream,add_to_cart
+confirm,confirm_yes
+brownie cost,get_price
+get me sweet potato fries,add_to_cart
+start fresh,clear_cart
+i'll have a soda,add_to_cart
+recap my order,view_cart
+how about cold tea,query_item
+take off the hawaiian,remove_from_cart
+small bbq chicken pizza,add_to_cart
+2 hawaiians,add_to_cart
+3 bbq chicken pizzas,add_to_cart
+what are my options,search_menu
+is there rings,query_item
+show me snacks,search_menu
+what can i say,help
+list drinks,search_menu
+do it,confirm_yes
+large salad,add_to_cart
+make it a large chocolate cake,add_to_cart
+i need a pineapple pizza,add_to_cart
+price check,get_price
+greetings,greeting
+what's in the sprite,query_ingredients
+does orange juice have cheese,query_ingredients
+what's the damage,get_price
+how much is a cappuccino,get_price
+view menu,view_menu
+undo that,remove_from_cart
+negative,confirm_no
+show me menu_items,search_menu
+list your items,search_menu
+tell me the ingredients in garden salad,query_ingredients
+i want 2 house salad,add_to_cart
+check order,view_cart
+that's not right,confirm_no
+do you still have cake,query_item
+what does small cost,get_price
+show my order,view_cart
+list the ingredients,query_ingredients
+what modifiers do you have,query_item
+two bbq chicken pizzas,add_to_cart
+delete that,remove_from_cart
+remove soda from cart,remove_from_cart
+what are the ingredients in margherita,query_ingredients
+check menu,view_menu
+take off sprite,remove_from_cart
+complete menu,view_menu
+change mushrooms to no cheese,modify_item
+can i get pepperoni pizza here,query_item
+submit my order,checkout
+upgrade to large,modify_item
+is there cheese in orange juice,query_ingredients
+wipe cart,clear_cart
+a large sweet potato fries,add_to_cart
+clear cart,clear_cart
+what's the price of a orange juice,get_price
+what's it made of,query_ingredients
+a medium salad,add_to_cart
+hey there,greeting
+show my cart,view_cart
+make it spicy,modify_item
+let me get a bacon burger,add_to_cart
+remove the coffee,remove_from_cart
+a small chocolate cake,add_to_cart
+list the menu,search_menu
+what's good here,query_item
+pay now,checkout
+a large black olives,add_to_cart
+i'll have onion rings,add_to_cart
+ingredients please,query_ingredients
+done ordering,checkout
+drop the chicken wings,remove_from_cart
+uh huh,confirm_yes
+give me 2 sweet potato fries,add_to_cart
+start over,clear_cart
+remove hawaiian from my order,remove_from_cart
+i want 2 chocolate cake,add_to_cart
+make it a large chocolate cake,add_to_cart
+explain,help
+show menu,search_menu
+do you offer double shot,query_item
+can i get chocolate cake,add_to_cart
+cancel that,remove_from_cart
+i'm ready,checkout
+yes that's right,confirm_yes
+that's everything,checkout
+do you have a large,query_item
+thank you bye,goodbye
+what ingredients,query_ingredients
+one chocolate cake please,add_to_cart
+ingredients in the margherita pizza,query_ingredients
+i want more pepperoni without sugar,modify_item
+reset cart,clear_cart
+i need coleslaw,add_to_cart
+what commands are there,help
+proceed to checkout,checkout
+do you have modifiers,query_item
+menu_items options,search_menu
+i'll take chocolate cake,add_to_cart
+ready to pay,checkout
+show me menu_items,query_item
+i'd like icecream,add_to_cart
+can you help me,help
+price of orange juice,get_price
+clear my order,clear_cart
+is the large available,query_item
+tell me about onion rings,query_item
+add coffee to cart,add_to_cart
+show me desserts,search_menu
+order a sprite,add_to_cart
+describe the double shot,query_item
+what ingredients are in plain pizza,query_ingredients
+any modifiers options,query_item
+do you sell cold tea,query_item
+i don't want ice cream,remove_from_cart
+i'm craving coffee,add_to_cart
+nuh uh,confirm_no
+what extra shot do you have,query_item
+absolutely,confirm_yes
+remove the last item,remove_from_cart
+what about mozzarella sticks,query_item
+let me get pineapple pizza,add_to_cart
+can i get a pineapple pizza,add_to_cart
+do you have toppings,query_item
+let me get cola,add_to_cart
+gimme a house salad,add_to_cart
+yeah,confirm_yes
+what can i order,search_menu
+scratch the pepperoni pizza,remove_from_cart
+let me start over,clear_cart
+i'll take a sweet potato fries,add_to_cart
+remove that,remove_from_cart
+order so far,view_cart
+got onion rings,query_item
+show cart,view_cart
+any mozzarella sticks,query_item
+i want a large salad,add_to_cart
+can i have soda,add_to_cart
+ok,confirm_yes
+begin again,clear_cart
+i need a plain pizza,add_to_cart
+all items,search_menu
+can i have a chocolate cake,add_to_cart
+i need a salad,add_to_cart
+take sprite off my order,remove_from_cart
+not that,confirm_no
+drinks please,search_menu
+show me modifiers,query_item
+take coleslaw off my order,remove_from_cart
+gimme a bacon burger,add_to_cart
+give me two onion rings,add_to_cart
+order plain pizza,add_to_cart
+do you have any onion rings,query_item
+no chicken wings,remove_from_cart
+can i have salad,add_to_cart
+perfect,confirm_yes
+gotta go,goodbye
+drop the soda,remove_from_cart
+give me a chocolate cake,add_to_cart
+i need help,help
+nevermind,confirm_no
+what ingredients does the cake have,query_ingredients
+show me food,search_menu
+i don't want that,confirm_no
+i'm done bye,goodbye
+i'm craving hawaiian,add_to_cart
+medium bacon burger,add_to_cart
+large bacon,add_to_cart
+howdy,greeting
+list food,search_menu
+i'll take bbq chicken pizza,add_to_cart
+how much,get_price
+modifiers options,search_menu
+order cheese pizza,add_to_cart
+i'll take a hawaiian,add_to_cart
+new order,clear_cart
+send it,checkout
+actually no coffee,remove_from_cart
+hiya,greeting
+dessert options,search_menu
+a medium icecream,add_to_cart
+is {item} made with cheese,query_ingredients
+how much for a chicken pizza,get_price
+total price,get_price
+medium plain pizza,add_to_cart
+how about large,query_item
+add 2 cheese pizza,add_to_cart
+cart summary,view_cart
+is pepperoni pizza available,query_item
+open menu,view_menu
+read me the menu,view_menu
+what ingredients does the olives have,query_ingredients
+i don't want greek salad,remove_from_cart
+is there cheese in the garden salad,query_ingredients
+finalize order,checkout
+i'll take a black olives,add_to_cart
+show me your menu,search_menu
+all options,search_menu
+look at menu,view_menu
+i want black olives,add_to_cart
+add coleslaw to my order,add_to_cart
+whole menu,view_menu
+no thank you,confirm_no
+a medium chocolate cake,add_to_cart
+cancel order,clear_cart
+extra cheese please,modify_item
+tell me about onion rings,query_item
+cancel extra pepperoni,remove_from_cart
+add two sprite,add_to_cart
+review my order,view_cart
+place order,checkout
+bye bye,goodbye
+give me two chocolate cake,add_to_cart
+hold the pickles,modify_item
+does hawaiian have cheese,query_ingredients
+show the menu,search_menu
+what's on the menu,search_menu
+menu please,view_menu
+don't add that,confirm_no
+what do i have so far,view_cart
+everything you have,search_menu
+can i have a sprite,add_to_cart
+what does chicken pizza cost,get_price
+make chocolate cake no cheese,modify_item
+how much is the orange juice,get_price
+can i see the menu,search_menu
+how much is the brownie,get_price
+clear everything,clear_cart
+add two cheese pizza,add_to_cart
+entire menu,view_menu
+finished ordering,checkout
+what items do you have,search_menu
+add chocolate cake,add_to_cart
+what can you do,help
+add chocolate cake to cart,add_to_cart
+tell me the ingredients in plain pizza,query_ingredients
+review order,view_cart
+sounds good,confirm_yes
+cost of french fries,get_price
+yes,confirm_yes
+what is in cake,query_ingredients
+what do you have,search_menu
+remove pepperoni pizza from cart,remove_from_cart
+remove the sprite,remove_from_cart
+i want a small bacon burger,add_to_cart
+remove everything,clear_cart
+does {item} have meat,query_ingredients
+what am i getting,view_cart
+i changed my mind,confirm_no
+give me bacon burger,add_to_cart
+2 bbq chicken pizzas,add_to_cart
+a small coleslaw,add_to_cart
+catch you later,goodbye
+i need sweet potato fries,add_to_cart
+what are the ingredients in the sprite,query_ingredients
+hello how are you,greeting
+i want to see the menu,view_menu
+hold on,confirm_no
+current order,view_cart
+view cart,view_cart
+take that off,remove_from_cart
+add it,confirm_yes
+anything new,query_item
+give me 2 bbq chicken pizza,add_to_cart
+what onion rings do you have,query_item
+i want a bacon,add_to_cart
+do you still have onion rings,query_item
+gimme icecream,add_to_cart
+yep,confirm_yes
+what's in the onion rings,query_item
+finish order,checkout
+what's the price,get_price
+finish my order,checkout
+checkout,checkout
+gimme cheese pizza,add_to_cart
+yo,greeting
+remove a coleslaw,remove_from_cart
+i'll have coffee,add_to_cart
+i'd like a sweet potato fries,add_to_cart
+complete my order,checkout
+toppings menu,search_menu
+tutorial,help
+definitely,confirm_yes
+guide,help
+check out,checkout
+got any toppings,query_item
+add bbq chicken pizza to my order,add_to_cart
+clear my cart,clear_cart
+what's in the cake,query_ingredients
+for sure,confirm_yes
+good afternoon,greeting
+i want to start over,clear_cart
+hey,greeting
+do you have gluten free options,query_item
+no,confirm_no
+erase order,clear_cart
+throw in a pineapple pizza,add_to_cart
+what's up,greeting
+i'll take coleslaw,add_to_cart
+forget the pepperoni pizza,remove_from_cart
+how much is mozzarella sticks,get_price
+list my items,view_cart
+what's in the double shot,query_item
+add a soda,add_to_cart
+i'll have the bacon,add_to_cart
+show me toppings,search_menu
+toppings options,search_menu
+see you,goodbye
+help,help
+price of small,get_price
+forget everything,clear_cart
+what's in garden salad,query_ingredients
+do you have menu_items,query_item
+you got it,confirm_yes
+got any double shot,query_item
+see ya,goodbye
+the menu,view_menu
+i'll have the sweet potato fries,add_to_cart
+that's correct,confirm_yes
+throw in a salad,add_to_cart
+describe the mozzarella sticks,query_item
+actually no hawaiian,remove_from_cart
+peace,goodbye
+i don't want the extra pepperoni,remove_from_cart
+add 2 pineapple pizza,add_to_cart
+what is in the margherita,query_ingredients
+list everything,search_menu
+let me see the menu,search_menu
+fresh start,clear_cart
+that's wrong,confirm_no
+please do,confirm_yes
+price for orange juice,get_price
+two onion ringss,add_to_cart
+what are the ingredients in the cake,query_ingredients
+what's the menu,view_menu
+confirmed,confirm_yes
+add two sweet potato fries,add_to_cart
+list ingredients in hawaiian,query_ingredients
+let's pay,checkout
+cost of small,get_price
+cancel my order,clear_cart
+can i get bbq chicken pizza,add_to_cart
+nothing else,checkout
+add coffee,add_to_cart
+small cost,get_price
+how does this work,help
+nah,confirm_no
+show order,view_cart
+add cola to my order,add_to_cart
+no onions on that,modify_item
+that's right,confirm_yes
+let's order,checkout
+make it small,modify_item
+what's it made with,query_ingredients
+what's available,search_menu
+i'd like cheese pizza,add_to_cart
+is there juice,query_item
+hi there,greeting
+three bbq chicken pizzas,add_to_cart
+i want two coleslaw,add_to_cart
+bacon burger please,add_to_cart
+what's the special,query_item
+show me ingredients in orange juice,query_ingredients
+that's all,checkout
+exactly,confirm_yes
+can i get mozzarella sticks here,query_item
+not that one,confirm_no
+menu options,view_menu
+tell me about the burger,query_item
+later,goodbye
+order summary,view_cart
+i'm craving a soda,add_to_cart
+what's in my cart,view_cart
+no i said,confirm_no
+remove a ice cream,remove_from_cart
+incorrect,confirm_no
+finalize my order,checkout
+totally,confirm_yes
+empty my cart,clear_cart
+yes add it,confirm_yes
+do you have any onion rings,query_item
+all done,checkout
+i want 2 cola,add_to_cart
+i want two black olives,add_to_cart
+get me a pineapple pizza,add_to_cart
+how much for a orange juice,get_price
+let me get a salad,add_to_cart
+good evening,greeting
+what are the ingredients in sprite,query_ingredients
+one sweet potato fries please,add_to_cart
+what is in orange juice,query_ingredients
+browse menu,search_menu
+tell me my order,view_cart
+substitute fries,modify_item
+can i have a bacon burger,add_to_cart
+what's the price of caesar salad,get_price
+list toppings,search_menu
+i want a bacon burger,add_to_cart
+do you have onion rings,query_item
+remove coffee,remove_from_cart
+right,confirm_yes
+teach me,help
+change that,modify_item
+show me drinks,search_menu
+two sprites,add_to_cart
+what's brownie cost,get_price
+got any mozzarella sticks,query_item
+cappuccino price,get_price
+of course,confirm_yes
+i want icecream,add_to_cart
+wait no,confirm_no
+i want a small hawaiian,add_to_cart
+reset order,clear_cart
+good morning,greeting
+show me how,help
+have a good one,goodbye
+don't add it,confirm_no
+sup,greeting
+3 coffees,add_to_cart
+i'd like salad,add_to_cart
+what ingredients does plain pizza have,query_ingredients
+can i customize,modify_item
+go to checkout,checkout
+delete the pepperoni pizza,remove_from_cart
+take off the extra pepperoni,remove_from_cart
+order a bacon,add_to_cart
+have a nice day,goodbye
+thanks bye,goodbye
+i want a large black olives,add_to_cart
+2 house salads,add_to_cart
+i'll have the coleslaw,add_to_cart
+put a sweet potato fries in my cart,add_to_cart
+what does a mozzarella sticks cost,get_price
+how much is that,get_price
+small coffee,add_to_cart
+wrong,confirm_no
+hello there,greeting
+scratch the coleslaw,remove_from_cart
+delete everything,clear_cart
+does the sprite have cheese,query_ingredients
+make it large,modify_item
+ciao,goodbye
+ingredients in the olives,query_ingredients
+i don't understand,help
+does olives contain cheese,query_ingredients
+medium coffee,add_to_cart
+place my order,checkout
+get rid of the greek salad,remove_from_cart
+brownie price,get_price
+what toppings do you have,query_item
+what modifiers do you have,search_menu
+yes i want that,confirm_yes
+what menu_items do you have,query_item
+order bacon burger,add_to_cart
+is there cheese in the plain pizza,query_ingredients
+forget the chicken wings,remove_from_cart
+modifiers menu,search_menu
+how do i order,help
+what's popular,query_item
+one hawaiian please,add_to_cart
+what toppings do you have,search_menu
+got any modifiers,query_item
+affirmative,confirm_yes
+does {item} have bacon,query_ingredients
+delete soda,remove_from_cart
+confirm my order,checkout
+do you have a burger,query_item
+instructions,help
+on the side,modify_item
+is there a juice,query_item
+get me icecream,add_to_cart
+is there cheese in sprite,query_ingredients
+do you have any toppings,query_item
+view order,view_cart
+check my order,view_cart
+do you have juice,query_item
+items in cart,view_cart
+complete order,checkout
+take care,goodbye
+bye,goodbye
+i'm craving a sprite,add_to_cart
+can you help,help
+gimme a soda,add_to_cart
+list all items,search_menu
+what do you recommend,query_item
+i'll have sweet potato fries,add_to_cart
+get me a hawaiian,add_to_cart
+is rings on the menu,query_item
+no thanks,confirm_no
+read back my order,view_cart
+what do you serve,search_menu
+yes please,confirm_yes
+i need icecream,add_to_cart
+delete sprite,remove_from_cart
+i want two soda,add_to_cart
+swap the sides,modify_item
+submit order,checkout
+i'll have a cola,add_to_cart
+does margherita contain cheese,query_ingredients
+hi,greeting
+bring up menu,view_menu
+what do i have,view_cart
+hook me up with a salad,add_to_cart
+delete the hawaiian,remove_from_cart
+put a icecream in my cart,add_to_cart
+i'm lost,help
+full menu,view_menu
+show me toppings,query_item
+i want a small coleslaw,add_to_cart
+that's all bye,goodbye
+see menu,view_menu
+what are my options,help
+make it a large icecream,add_to_cart
+i'd like a salad,add_to_cart
+what's in it,query_ingredients
+forget that,confirm_no
+i'm ready to pay,checkout
+got any menu_items,query_item
+remove one,remove_from_cart
+i'm confused,help
+tell me about the pepperoni pizza,query_item
+go ahead,confirm_yes
+give me house salad,add_to_cart
+not really,confirm_no
+how much would orange juice be,get_price
+what's in olives,query_ingredients
+any toppings options,query_item
+put a coffee in my cart,add_to_cart
+add a bacon burger,add_to_cart
+add a coffee,add_to_cart
+empty cart,clear_cart
+scratch that,confirm_no
+let me get a house salad,add_to_cart
+sure,confirm_yes
+i'm craving a chocolate cake,add_to_cart
+small plain pizza,add_to_cart
+do you have vegan options,query_item
+ingredients in cake,query_ingredients
+tell me the ingredients,query_ingredients
+give me a sprite,add_to_cart
+three black olivess,add_to_cart
+i'm out,goodbye

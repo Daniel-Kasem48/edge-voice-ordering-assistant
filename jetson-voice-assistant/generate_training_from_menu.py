@@ -79,6 +79,7 @@ class MenuBasedTrainingGenerator:
         
         data.extend(self._generate_add_to_cart(item_names))
         data.extend(self._generate_query_item(item_names))
+        data.extend(self._generate_query_ingredients(item_names))
         data.extend(self._generate_search_menu())
         data.extend(self._generate_view_menu())
         data.extend(self._generate_view_cart())
@@ -233,6 +234,79 @@ class MenuBasedTrainingGenerator:
             "what's good here",
         ]
         data.extend([(t, "query_item") for t in generic])
+        
+        return data
+    
+    def _generate_query_ingredients(self, items: List[str]) -> List[Tuple[str, str]]:
+        """Generate query_ingredients training examples for ingredient queries"""
+        patterns = [
+            # "what's in X" patterns
+            "what's in the {item}",
+            "what's in {item}",
+            "whats in the {item}",
+            "what is in the {item}",
+            "what is in {item}",
+            
+            # "ingredients" patterns
+            "what are the ingredients in {item}",
+            "what are the ingredients in the {item}",
+            "ingredients in {item}",
+            "ingredients in the {item}",
+            "what ingredients are in {item}",
+            "what ingredients does {item} have",
+            "what ingredients does the {item} have",
+            "tell me the ingredients in {item}",
+            "list ingredients in {item}",
+            "show me ingredients in {item}",
+            "show me the {item} ingredients",  # NEW: "show me the pizza ingredients"
+            "{item} ingredients",  # NEW: "pizza ingredients"
+            "the {item} ingredients",  # NEW: "the pizza ingredients"
+            
+            # "how is X made" patterns - NEW
+            "how is {item} made",
+            "how is the {item} made",
+            "how {item} is made",
+            "how do you make {item}",
+            "how do you make the {item}",
+            "what's {item} made of",
+            "what's the {item} made of",
+            "what's {item} made with",
+            "what is {item} made from",
+            
+            # "does X have Y" patterns
+            "does {item} have cheese",
+            "does the {item} have cheese",
+            "does {item} contain cheese",
+            "is there cheese in {item}",
+            "is there cheese in the {item}",
+            "does {item} have bacon",
+            "does {item} have meat",
+            "is {item} made with cheese",
+            
+            # Generic ingredient questions
+            "what ingredients",
+            "show ingredients",
+            "tell me the ingredients",
+            "what's it made of",
+            "what's it made with",
+            "what's in it",
+            "ingredients please",
+            "list the ingredients",
+        ]
+        
+        data = []
+        sample_items = random.sample(items, min(10, len(items)))
+        
+        # Generate with specific items
+        for pattern in patterns[:35]:  # First 35 patterns have {item}
+            if '{item}' in pattern:
+                for item in random.sample(sample_items, min(2, len(sample_items))):
+                    text = pattern.format(item=item)
+                    data.append((text, "query_ingredients"))
+        
+        # Add generic patterns (last few without {item})
+        for pattern in patterns[35:]:
+            data.append((pattern, "query_ingredients"))
         
         return data
     

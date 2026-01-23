@@ -29,6 +29,13 @@ class MenuVocabulary:
     # e.g., {"veggie": "Vegetarian", "hot": "Spicy"}
     tag_aliases: Dict[str, str] = field(default_factory=dict)
     
+    # Ingredients from menu items (e.g., "cheese", "tomato", "beef")
+    ingredients: Set[str] = field(default_factory=set)
+    
+    # Ingredient to items mapping - which items contain which ingredients
+    # e.g., {"cheese": ["Margherita Pizza", "Cheeseburger"], "bacon": ["Bacon Burger"]}
+    ingredient_to_items: Dict[str, List[str]] = field(default_factory=dict)
+    
     # Sample items per category for help examples
     sample_items: Dict[str, List[str]] = field(default_factory=dict)
     
@@ -107,6 +114,9 @@ class MenuVocabularyBuilder:
         vocab.tags = self._extract_tags()
         vocab.tag_aliases = self._build_tag_aliases(vocab.tags)
         
+        # Extract ingredients
+        vocab.ingredients, vocab.ingredient_to_items = self._extract_ingredients()
+        
         # Extract item names
         vocab.all_item_names = self._extract_item_names()
         vocab.sample_items = self._get_sample_items_per_category()
@@ -164,6 +174,36 @@ class MenuVocabularyBuilder:
                 tags.add(item_tags)
         return tags
     
+    def _extract_ingredients(self) -> tuple:
+        """
+        Extract all unique ingredients and build ingredient-to-items mapping.
+        Returns (set of ingredients, dict mapping ingredient -> item names)
+        """
+        ingredients = set()
+        ingredient_to_items = defaultdict(list)
+        
+        for item in self.items:
+            item_name = item.get('name') or item.get('title') or ''
+            item_ingredients = item.get('ingredients') or []
+            
+            if isinstance(item_ingredients, list):
+                for ingredient in item_ingredients:
+                    ingredient_lower = ingredient.lower()
+                    ingredients.add(ingredient_lower)
+                    ingredient_to_items[ingredient_lower].append(item_name)
+                    
+                    # Also add key words from multi-word ingredients
+                    # e.g., "mozzarella cheese" -> also searchable by "mozzarella" or "cheese"
+                    words = ingredient_lower.split()
+                    for word in words:
+                        if len(word) > 3:  # Skip short words like "oil"
+                            if word not in ingredient_to_items:
+                                ingredient_to_items[word] = []
+                            if item_name not in ingredient_to_items[word]:
+                                ingredient_to_items[word].append(item_name)
+        
+        return ingredients, dict(ingredient_to_items)
+    
     def _build_tag_aliases(self, tags: Set[str]) -> Dict[str, str]:
         """
         Build mapping from common terms to actual tag names.
@@ -174,17 +214,17 @@ class MenuVocabularyBuilder:
         for tag in tags:
             tag_lower = tag.lower()
             
-            # Check each alias pattern
-            for canonical, patterns in self.TAG_ALIAS_PATTERNS.items():
-                for pattern in patterns:
-                    if pattern in tag_lower or tag_lower in pattern:
-                        # Map all patterns to this tag
-                        for p in patterns:
-                            aliases[p] = tag
-                        break
-            
-            # Also map tag itself
+            # First, map the tag itself
             aliases[tag_lower] = tag
+            
+            # Check if this tag matches any alias pattern EXACTLY
+            for canonical, patterns in self.TAG_ALIAS_PATTERNS.items():
+                # Only use patterns if this tag matches the canonical name
+                if canonical == tag_lower:
+                    # Map all alias patterns to this tag
+                    for p in patterns:
+                        aliases[p] = tag
+                    break
         
         return aliases
     

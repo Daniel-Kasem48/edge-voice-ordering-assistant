@@ -5,6 +5,7 @@ Multi-tenant restaurant order assistant (text mode for testing)
 
 import os
 import sys
+import re
 from pathlib import Path
 from typing import Optional, Dict, Any, List
 
@@ -19,6 +20,7 @@ from nlp.menu_matcher import MenuMatcher, ParsedOrder
 from state.cart import ShoppingCart, CartManager
 from state.context_manager import ContextManager
 from menu.vocabulary import MenuVocabulary, MenuVocabularyBuilder, VocabularyMatcher
+from output.speech_formatter import SpeechFormatter
 
 
 class TextAssistant:
@@ -104,6 +106,9 @@ class TextAssistant:
         # Context management
         self.context_manager = ContextManager()
         
+        # Speech formatting for TTS
+        self.speech_formatter = SpeechFormatter()
+        
         # State
         self.running = False
         self.awaiting_confirmation = False
@@ -135,9 +140,53 @@ class TextAssistant:
         """Get current session's cart"""
         return self.cart_manager.get_cart(self.current_session, self.config.tenant_id)
     
-    def respond(self, message: str):
-        """Send response to user"""
-        self.output_engine.speak(message)
+    def respond(self, message: str, response_type: str = 'auto'):
+        """
+        Send response to user with TTS formatting
+        
+        Args:
+            message: Raw response text
+            response_type: Type of response (auto, general, cart, menu, confirmation, option)
+        """
+        # Auto-detect response type from content if not specified
+        if response_type == 'auto':
+            response_type = self._detect_response_type(message)
+        
+        # Format for natural speech
+        if response_type == 'cart':
+            formatted = self.speech_formatter.format_cart_for_speech(message)
+        elif response_type == 'menu':
+            formatted = self.speech_formatter.format_menu_for_speech(message)
+        elif response_type == 'confirmation':
+            formatted = self.speech_formatter.format_confirmation_for_speech(message)
+        elif response_type == 'option':
+            formatted = self.speech_formatter.format_option_prompt(message)
+        else:
+            formatted = self.speech_formatter.format_for_speech(message)
+        
+        self.output_engine.speak(formatted)
+    
+    def _detect_response_type(self, message: str) -> str:
+        """Auto-detect response type from message content"""
+        message_lower = message.lower()
+        
+        # Check for cart-related content
+        if any(word in message_lower for word in ['your cart', 'total', 'including tax', 'cart is empty']):
+            return 'cart'
+        
+        # Check for menu listing
+        if any(word in message_lower for word in ['our menu', 'we have', 'available', 'include:']):
+            return 'menu'
+        
+        # Check for option prompts
+        if any(word in message_lower for word in ['what size', 'which option', 'choose from', 'select']):
+            return 'option'
+        
+        # Check for confirmations
+        if any(word in message_lower for word in ['confirm', 'ready to checkout', 'would you like to complete']):
+            return 'confirmation'
+        
+        return 'general'
     
     def process_intent(self, text: str, intent: IntentResult) -> str:
         """
@@ -162,6 +211,7 @@ class TextAssistant:
             "search_menu": self._handle_search_menu,
             "view_menu": self._handle_search_menu,  # Alias for search_menu
             "query_item": self._handle_query_item,
+            "query_ingredients": self._handle_query_ingredients,
             "get_price": self._handle_get_price,
             "modify_item": self._handle_modify_item,
             "help": self._handle_help,
@@ -335,11 +385,210 @@ class TextAssistant:
         summary = self.cart.get_summary()
         return f"Ready to checkout!\n\n{summary}\n\nWould you like to complete this order? (say 'yes' to confirm)"
     
-    def _handle_query_item(self, text: str, intent: IntentResult) -> str:
-        """Handle query about item availability (do you have X?)"""
+    def _check_ingredient_query(self, text: str) -> Optional[str]:
+        """
+        Check if user is asking about ingredients.
+        Patterns: "what's in X", "ingredients in X", "does X have Y", "is there Y in X"
+        Returns response if ingredient query, None otherwise.
+        """
+        # Patterns for ingredient queries
+        ingredient_patterns = [
+            r"what'?s?\s+in\s+(?:the\s+)?(.+)",
+            r"what\s+are\s+the\s+ingredients\s+(?:in|of|for)\s+(?:the\s+)?(.+)",
+            r"ingredients\s+(?:in|of|for)\s+(?:the\s+)?(.+)",
+            r"show\s+(?:me\s+)?(?:the\s+)?(.+?)\s+ingredients",  # "show me pizza ingredients"
+            r"(?:the\s+)?(.+?)\s+ingredients",  # "pizza ingredients"
+            r"how\s+(?:is\s+)?(?:the\s+)?(.+?)\s+(?:is\s+)?made",  # "how pizza is made"
+            r"how\s+do\s+you\s+make\s+(?:the\s+)?(.+)",  # "how do you make pizza"
+            r"what'?s?\s+(?:the\s+)?(.+?)\s+made\s+(?:of|with|from)",  # "what's pizza made of"
+            r"does\s+(?:the\s+)?(.+?)\s+have\s+(.+)",
+            r"is\s+there\s+(.+?)\s+in\s+(?:the\s+)?(.+)",
+            r"(?:does|do)\s+(?:the\s+)?(.+?)\s+contain\s+(.+)",
+        ]
+        
+        for pattern in ingredient_patterns:
+            match = re.match(pattern, text)
+            if match:
+                groups = match.groups()
+                
+                # Two group patterns: "does X have Y" - check specific ingredient
+                if len(groups) == 2:
+                    item_query = groups[0].strip() if "have" in pattern or "contain" in pattern else groups[1].strip()
+                    ingredient_query = groups[1].strip() if "have" in pattern or "contain" in pattern else groups[0].strip()
+                    return self._answer_ingredient_check(item_query, ingredient_query)
+                
+                # Single group pattern: "what's in X" - list all ingredients
+                else:
+                    item_query = groups[0].strip()
+                    return self._list_ingredients(item_query)
+        
+        return None
+    
+    def _list_ingredients(self, item_query: str) -> str:
+        """List all ingredients in an item"""
+        # Try to find the item
+        order = self.menu_matcher.parse_order(item_query)
+        
+        if order.items:
+            item = order.items[0].item
+            
+            # Check if there are multiple high-confidence matches
+            results = self.menu_matcher.search_menu(item_query, limit=10)
+            high_matches = [(r[0], r[1]) for r in results if r[1] >= 85]  # Stricter threshold
+            
+            # If multiple matches with similar scores, ask for clarification
+            # BUT: if the top match is significantly better (>10% difference), use it
+            if len(high_matches) > 1:
+                top_score = high_matches[0][1]
+                second_score = high_matches[1][1]
+                
+                # If top match is significantly better, use it
+                if top_score - second_score >= 10:
+                    # Clear winner - proceed with single match
+                    pass
+                else:
+                    # Similar scores - check if they're all from same category
+                    categories = set([m[0].category for m in high_matches])
+                    if len(categories) == 1:
+                        # Multiple items in same category
+                        items_list = ", ".join([m[0].name for m in high_matches])
+                        return f"We have several {item.category} options: {items_list}. Which one would you like to know about?"
+            
+            # Single match - show ingredients
+            if hasattr(item, 'ingredients') and item.ingredients:
+                ingredients_text = ", ".join(item.ingredients)
+                return f"{item.name} contains: {ingredients_text}."
+            else:
+                return f"{item.name} doesn't have ingredient information available."
+        
+        # Try fuzzy search
+        results = self.menu_matcher.search_menu(item_query, limit=5)
+        if results and results[0][1] > 70:  # High confidence match
+            # Check for multiple similar matches
+            high_matches = [(r[0], r[1]) for r in results if r[1] >= results[0][1] - 10]
+            if len(high_matches) > 1:
+                items_list = ", ".join([m[0].name for m in high_matches])
+                return f"Which one? We have: {items_list}"
+            
+            item = results[0][0]
+            if hasattr(item, 'ingredients') and item.ingredients:
+                ingredients_text = ", ".join(item.ingredients)
+                return f"{item.name} contains: {ingredients_text}."
+            else:
+                return f"{item.name} doesn't have ingredient information available."
+        
+        return f"I couldn't find '{item_query}' on the menu. Could you try asking about a specific item?"
+    
+    def _answer_ingredient_check(self, item_query: str, ingredient_query: str) -> str:
+        """Check if an item contains a specific ingredient"""
+        # Find the item
+        order = self.menu_matcher.parse_order(item_query)
+        item = None
+        
+        if order.items:
+            item = order.items[0].item
+        else:
+            # Try fuzzy search
+            results = self.menu_matcher.search_menu(item_query, limit=1)
+            if results and results[0][1] > 70:
+                item = results[0][0]
+        
+        if not item:
+            return f"I couldn't find '{item_query}' on the menu."
+        
+        # Check if item has ingredients
+        if not hasattr(item, 'ingredients') or not item.ingredients:
+            return f"{item.name} doesn't have ingredient information available."
+        
+        # Check if ingredient is in the item
+        ingredients_lower = [ing.lower() for ing in item.ingredients]
+        ingredient_query_lower = ingredient_query.lower()
+        
+        # Check for exact or partial match
+        found = False
+        for ing in ingredients_lower:
+            if ingredient_query_lower in ing or ing in ingredient_query_lower:
+                found = True
+                break
+        
+        if found:
+            return f"Yes, {item.name} contains {ingredient_query}."
+        else:
+            # List what it does have
+            ingredients_text = ", ".join(item.ingredients[:5])  # First 5 ingredients
+            if len(item.ingredients) > 5:
+                ingredients_text += f", and {len(item.ingredients)-5} more"
+            return f"No, {item.name} doesn't contain {ingredient_query}. It has: {ingredients_text}."
+    
+    def _handle_query_ingredients(self, text: str, intent: IntentResult) -> str:
+        """Handle ingredient queries (what's in X?, does X have Y?)"""
         text_lower = text.lower()
         
-        # First check if asking about a category
+        # Try to extract ingredient query using patterns
+        response = self._check_ingredient_query(text_lower)
+        if response:
+            return response
+        
+        # If no specific pattern matched, try to find any menu item mentioned in the text
+        # This handles cases like "I want burger, show ingredients"
+        order = self.menu_matcher.parse_order(text_lower)
+        if order.items:
+            item = order.items[0].item
+            
+            # Check if there are multiple matches - if so, ask user to clarify
+            results = self.menu_matcher.search_menu(text_lower, limit=10)
+            high_matches = [(r[0], r[1]) for r in results if r[1] >= 80]
+            
+            # If multiple high-confidence matches, list them
+            if len(high_matches) > 1:
+                # Check if they're all from the same category
+                categories = set([m[0].category for m in high_matches])
+                if len(categories) == 1:
+                    # Multiple items in same category - list them
+                    items_list = ", ".join([m[0].name for m in high_matches[:5]])
+                    return f"We have several {item.category} options: {items_list}. Which one would you like to know about?"
+            
+            # Single match or clear winner - show ingredients
+            if hasattr(item, 'ingredients') and item.ingredients:
+                ingredients_text = ", ".join(item.ingredients)
+                return f"{item.name} has {ingredients_text}."
+            else:
+                return f"{item.name} doesn't have ingredient information available."
+        
+        # Try fuzzy search for item name
+        results = self.menu_matcher.search_menu(text_lower, limit=5)
+        if results and results[0][1] > 60:
+            item = results[0][0]
+            
+            # Check for multiple similar matches
+            high_matches = [(r[0], r[1]) for r in results if r[1] >= results[0][1] - 10]
+            if len(high_matches) > 1:
+                items_list = ", ".join([m[0].name for m in high_matches])
+                return f"Which one? {items_list}"
+            
+            if hasattr(item, 'ingredients') and item.ingredients:
+                ingredients_text = ", ".join(item.ingredients)
+                return f"{item.name} has {ingredients_text}."
+        
+        # If no item specified, ask which item they want to know about
+        return "Which item would you like to know the ingredients for?"
+    
+    def _handle_query_item(self, text: str, intent: IntentResult) -> str:
+        """Handle query about item availability (do you have X?) or ingredients (what's in X?)"""
+        text_lower = text.lower()
+        
+        # Check if asking about ingredients
+        ingredient_query = self._check_ingredient_query(text_lower)
+        if ingredient_query:
+            return ingredient_query
+        
+        # First check if asking about a tag (vegetarian, breakfast, gluten-free, etc.)
+        matched_tag = self.vocab_matcher.match_tag(text_lower)
+        if matched_tag:
+            # Redirect to search_menu for tag-based filtering
+            return self._handle_search_menu(text, intent)
+        
+        # Check if asking about a category
         categories = {}
         for item in self.config.menu_items:
             cat = item.category.lower()
@@ -542,7 +791,7 @@ class TextAssistant:
         if context['last_category'] and any(word in text.lower() for word in ['more', 'else', 'other']):
             text = f"show me more {context['last_category']}s"
         
-        # Check for category keywords
+        # Build category and tag indexes
         categories = {}
         for item in self.config.menu_items:
             cat = item.category.lower()
@@ -550,15 +799,44 @@ class TextAssistant:
                 categories[cat] = []
             categories[cat].append(item)
         
-        # Check if asking about specific category with filters
         text_lower = text.lower()
         
-        # Check for items not in menu (breakfast, lunch, dinner)
-        unavailable_items = ["breakfast", "lunch", "dinner", "brunch"]
-        for unavail in unavailable_items:
-            if unavail in text_lower:
-                cat_list = ", ".join(categories.keys())
-                return f"We don't have a specific {unavail} menu, but we have {cat_list} available. What would you like?"
+        # Check for tag-based filtering (breakfast, vegetarian, gluten-free, etc.)
+        matched_tag = self.vocab_matcher.match_tag(text_lower)
+        if matched_tag:
+            # Filter items by tag
+            matching_items = []
+            for item in self.config.menu_items:
+                item_tags = getattr(item, 'tags', []) or []
+                # Convert to lowercase for comparison
+                item_tags_lower = [t.lower() for t in item_tags]
+                if matched_tag.lower() in item_tags_lower:
+                    matching_items.append(item)
+            
+            if matching_items:
+                # Group by category for better display
+                items_by_cat = {}
+                for item in matching_items:
+                    cat = item.category
+                    if cat not in items_by_cat:
+                        items_by_cat[cat] = []
+                    items_by_cat[cat].append(item.name)
+                
+                # Format response
+                if len(items_by_cat) == 1:
+                    cat = list(items_by_cat.keys())[0]
+                    items_text = ", ".join(items_by_cat[cat][:5])
+                    if len(items_by_cat[cat]) > 5:
+                        items_text += f" and {len(items_by_cat[cat])-5} more"
+                    return f"Our {matched_tag} {cat} options: {items_text}."
+                else:
+                    parts = []
+                    for cat, items in list(items_by_cat.items())[:3]:
+                        items_text = ", ".join(items[:3])
+                        parts.append(f"{cat}: {items_text}")
+                    return f"Our {matched_tag} options include: {'; '.join(parts)}. What would you like?"
+            else:
+                return f"Sorry, we don't have any {matched_tag} items right now."
         
         # Check for "without" or "no" modifiers
         filter_out = []
@@ -717,6 +995,12 @@ class TextAssistant:
                 categories = set(item.category for item in self.config.menu_items)
                 cat_list = ", ".join(categories)
                 return f"We have {cat_list}. What category would you like to see?"
+        
+        # Check if it matches a tag from the menu vocabulary (vegetarian, breakfast, etc.)
+        matched_tag = self.vocab_matcher.match_tag(text_lower)
+        if matched_tag:
+            # Treat as search menu with tag filter
+            return self._handle_search_menu(text, intent)
         
         # Check if it matches a category from the menu vocabulary (dynamic, not hardcoded)
         matched_categories = self.vocab_matcher.match_category(text_lower)
