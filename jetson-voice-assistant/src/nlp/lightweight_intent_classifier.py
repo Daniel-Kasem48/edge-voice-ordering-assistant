@@ -1,5 +1,5 @@
 """
-Lightweight Intent Classifier with FastText and DistilBERT options
+Lightweight Intent Classifier with FastText
 Optimized for edge devices (Jetson) with CPU/laptop testing support
 """
 
@@ -134,210 +134,10 @@ class FastTextIntentModel(BaseIntentModel):
         return 0.0
 
 
-class DistilBERTIntentModel(BaseIntentModel):
-    """
-    DistilBERT-based intent classifier
-    - Lightweight BERT (65MB base model)
-    - Better accuracy than FastText
-    - Suitable for Jetson with GPU
-    """
-    
-    def __init__(self, model_path: Optional[str] = None, use_gpu: bool = False):
-        self.model = None
-        self.tokenizer = None
-        self.model_path = None
-        self.use_gpu = use_gpu
-        self.device = None
-        self.label_map = {}
-        
-        if model_path:
-            self.load(model_path)
-    
-    def load(self, model_path: str):
-        """Load DistilBERT model"""
-        try:
-            from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
-            import torch
-        except ImportError:
-            raise ImportError("Transformers not installed. Run: pip install transformers torch")
-        
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model directory not found: {model_path}")
-        
-        # Set device
-        self.device = torch.device("cuda" if self.use_gpu and torch.cuda.is_available() else "cpu")
-        
-        # Load model and tokenizer
-        self.tokenizer = DistilBertTokenizer.from_pretrained(model_path)
-        self.model = DistilBertForSequenceClassification.from_pretrained(model_path)
-        self.model.to(self.device)
-        self.model.eval()
-        
-        # Load label map
-        label_map_path = Path(model_path) / "label_map.json"
-        if label_map_path.exists():
-            with open(label_map_path, "r") as f:
-                self.label_map = json.load(f)
-        
-        self.model_path = model_path
-        print(f"✅ Loaded DistilBERT model on {self.device}: {model_path}")
-    
-    def predict(self, text: str, top_k: int = 3) -> IntentResult:
-        """Predict intent using DistilBERT"""
-        if not self.model:
-            raise RuntimeError("Model not loaded")
-        
-        try:
-            import torch
-            import torch.nn.functional as F
-        except ImportError:
-            raise ImportError("PyTorch not installed")
-        
-        # Tokenize
-        inputs = self.tokenizer(
-            text,
-            return_tensors="pt",
-            padding=True,
-            truncation=True,
-            max_length=128
-        ).to(self.device)
-        
-        # Predict
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-            logits = outputs.logits
-            probs = F.softmax(logits, dim=-1)
-        
-        # Get top-k predictions
-        top_probs, top_indices = torch.topk(probs[0], k=min(top_k, len(probs[0])))
-        
-        # Map to intents
-        intents = {}
-        for idx, prob in zip(top_indices.cpu().numpy(), top_probs.cpu().numpy()):
-            intent = self.label_map.get(str(idx), f"class_{idx}")
-            intents[intent] = float(prob)
-        
-        top_intent = list(intents.keys())[0] if intents else "unknown"
-        top_confidence = list(intents.values())[0] if intents else 0.0
-        
-        return IntentResult(
-            intent=top_intent,
-            confidence=top_confidence,
-            all_intents=intents
-        )
-    
-    def get_model_size_mb(self) -> float:
-        """Get model size in MB"""
-        if self.model_path and os.path.exists(self.model_path):
-            total_size = 0
-            for file in Path(self.model_path).glob("**/*"):
-                if file.is_file():
-                    total_size += file.stat().st_size
-            return total_size / (1024 * 1024)
-        return 0.0
-
-
-class ONNXIntentModel(BaseIntentModel):
-    """
-    ONNX-optimized intent classifier
-    - Convert PyTorch/TF models to ONNX
-    - Optimized for edge inference
-    - Works well on Jetson
-    """
-    
-    def __init__(self, model_path: Optional[str] = None):
-        self.session = None
-        self.model_path = None
-        self.label_map = {}
-        self.tokenizer = None
-        
-        if model_path:
-            self.load(model_path)
-    
-    def load(self, model_path: str):
-        """Load ONNX model"""
-        try:
-            import onnxruntime as ort
-        except ImportError:
-            raise ImportError("ONNX Runtime not installed. Run: pip install onnxruntime")
-        
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"ONNX model not found: {model_path}")
-        
-        # Load ONNX model
-        self.session = ort.InferenceSession(model_path)
-        self.model_path = model_path
-        
-        # Load label map
-        label_map_path = Path(model_path).parent / "label_map.json"
-        if label_map_path.exists():
-            with open(label_map_path, "r") as f:
-                self.label_map = json.load(f)
-        
-        # Load tokenizer config
-        tokenizer_path = Path(model_path).parent / "tokenizer_config.json"
-        if tokenizer_path.exists():
-            # Simple tokenizer for demo
-            self.tokenizer = self._simple_tokenizer
-        
-        print(f"✅ Loaded ONNX model: {model_path}")
-    
-    def _simple_tokenizer(self, text: str) -> np.ndarray:
-        """Simple tokenizer for demo (replace with proper tokenizer)"""
-        # Convert text to token IDs (simplified)
-        words = text.lower().split()
-        # Mock token IDs (in practice, use proper tokenizer)
-        token_ids = [hash(w) % 10000 for w in words[:128]]
-        # Pad to 128
-        token_ids += [0] * (128 - len(token_ids))
-        return np.array([token_ids], dtype=np.int64)
-    
-    def predict(self, text: str, top_k: int = 3) -> IntentResult:
-        """Predict intent using ONNX"""
-        if not self.session:
-            raise RuntimeError("Model not loaded")
-        
-        # Tokenize (simplified)
-        input_ids = self._simple_tokenizer(text)
-        
-        # Run inference
-        inputs = {self.session.get_inputs()[0].name: input_ids}
-        outputs = self.session.run(None, inputs)
-        logits = outputs[0][0]
-        
-        # Softmax
-        exp_logits = np.exp(logits - np.max(logits))
-        probs = exp_logits / exp_logits.sum()
-        
-        # Get top-k
-        top_indices = np.argsort(probs)[-top_k:][::-1]
-        
-        # Map to intents
-        intents = {}
-        for idx in top_indices:
-            intent = self.label_map.get(str(idx), f"class_{idx}")
-            intents[intent] = float(probs[idx])
-        
-        top_intent = list(intents.keys())[0] if intents else "unknown"
-        top_confidence = list(intents.values())[0] if intents else 0.0
-        
-        return IntentResult(
-            intent=top_intent,
-            confidence=top_confidence,
-            all_intents=intents
-        )
-    
-    def get_model_size_mb(self) -> float:
-        """Get model size in MB"""
-        if self.model_path and os.path.exists(self.model_path):
-            return os.path.getsize(self.model_path) / (1024 * 1024)
-        return 0.0
-
-
 class LightweightIntentClassifier:
     """
-    Main classifier that can use different lightweight models
-    Falls back to rule-based if no model available
+    FastText-based intent classifier with optional rule-based fallback
+    Optimized for edge devices
     """
     
     def __init__(
@@ -352,9 +152,9 @@ class LightweightIntentClassifier:
         Initialize lightweight intent classifier
         
         Args:
-            model_type: "fasttext", "distilbert", or "onnx"
-            model_path: Path to model file/directory
-            use_gpu: Use GPU if available (for DistilBERT)
+            model_type: Must be "fasttext" (only supported type)
+            model_path: Path to FastText model file (.bin)
+            use_gpu: Ignored (FastText is CPU-only)
             fallback_to_rules: Use rule-based classifier as fallback
             vocabulary: Optional MenuVocabulary for dynamic food keyword detection
         """
@@ -374,15 +174,11 @@ class LightweightIntentClassifier:
             print("✅ Rule-based fallback ready")
     
     def _load_model(self, model_type: str, model_path: str, use_gpu: bool):
-        """Load specified model type"""
+        """Load FastText model"""
         if model_type == "fasttext":
             self.model = FastTextIntentModel(model_path)
-        elif model_type == "distilbert":
-            self.model = DistilBERTIntentModel(model_path, use_gpu)
-        elif model_type == "onnx":
-            self.model = ONNXIntentModel(model_path)
         else:
-            raise ValueError(f"Unknown model type: {model_type}")
+            raise ValueError(f"Unsupported model type: {model_type}. Only 'fasttext' is supported.")
     
     def _should_use_rule_based(self, text: str, model_result: IntentResult) -> bool:
         """Check if we should use rule-based classifier instead"""
