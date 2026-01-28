@@ -73,120 +73,59 @@ class FastTextIntentModel(BaseIntentModel):
         self.model_path = model_path
         print(f"✅ Loaded FastText model: {model_path}")
     
-    def _correct_typos(self, text: str) -> str:
-        """Simple typo correction for common restaurant terms"""
-        # Common typos and their corrections
-        typo_corrections = {
-            'deserrt': 'dessert',
-            'desserrt': 'dessert',
-            'desrt': 'dessert',
-            'icecream': 'ice cream',
-            'ice-cream': 'ice cream',
-            'scholocate': 'chocolate',
-            'choclate': 'chocolate',
-            'chocolat': 'chocolate',
-            'burgur': 'burger',
-            'buger': 'burger',
-            'piza': 'pizza',
-            'pizzza': 'pizza',
-            'cofee': 'coffee',
-            'coffe': 'coffee',
-            'frys': 'fries',
-            'fris': 'fries',
-            'vegeterian': 'vegetarian',
-            'vegitarian': 'vegetarian',
-            'vegiterian': 'vegetarian',
-            'hawaian': 'hawaiian',
-            'hawain': 'hawaiian',
-            'margherita': 'margherita',
-            'margarita': 'margherita',
-            'peperoni': 'pepperoni',
-            'pepperoni': 'pepperoni',
-        }
-        
-        # Apply corrections
-        words = text.lower().split()
-        corrected_words = []
-        for word in words:
-            corrected_words.append(typo_corrections.get(word, word))
-        
-        corrected_text = ' '.join(corrected_words)
-        
-        # Fix common grammar issues
-        # "do you pizzas" -> "do you have pizzas"
-        corrected_text = re.sub(r'\b(do you|can you|could you)\s+(pizza|burger|drink|coffee|dessert|salad)s?\b', 
-                               r'\1 have \2s', corrected_text)
-        
-        return corrected_text
-    
     def predict(self, text: str, top_k: int = 3) -> IntentResult:
         """Predict intent using FastText"""
         if not self.model:
             raise RuntimeError("Model not loaded")
         
-        # Clean and correct text
+        # Clean text (basic preprocessing only)
         text = text.lower().strip()
-        corrected_text = self._correct_typos(text)
         
-        # Try both original and corrected text
-        texts_to_try = [corrected_text]
-        if corrected_text != text:
-            texts_to_try.append(text)
-        
-        best_result = None
-        best_confidence = 0.0
-        
-        for try_text in texts_to_try:
-            try:
-                # Predict - handle numpy 2.0 compatibility
-                import warnings
-                with warnings.catch_warnings():
-                    warnings.filterwarnings('ignore')
-                    # Use k=1 first to avoid tuple unpacking issues
-                    labels, probs = self.model.predict(try_text, k=1)
-                    
-                    # Now get more if needed
-                    if top_k > 1:
-                        labels, probs = self.model.predict(try_text, k=top_k)
+        try:
+            # Predict - handle numpy 2.0 compatibility
+            import warnings
+            with warnings.catch_warnings():
+                warnings.filterwarnings('ignore')
+                # Use k=1 first to avoid tuple unpacking issues
+                labels, probs = self.model.predict(text, k=1)
                 
-                # Parse results - handle both tuple and array returns
-                intents = {}
+                # Now get more if needed
+                if top_k > 1:
+                    labels, probs = self.model.predict(text, k=top_k)
+            
+            # Parse results - handle both tuple and array returns
+            intents = {}
+            
+            # Convert to lists if needed
+            if hasattr(labels, 'tolist'):
+                labels = labels.tolist() if hasattr(labels.tolist, '__call__') else [str(labels)]
+            elif not isinstance(labels, (list, tuple)):
+                labels = [labels]
                 
-                # Convert to lists if needed
-                if hasattr(labels, 'tolist'):
-                    labels = labels.tolist() if hasattr(labels.tolist, '__call__') else [str(labels)]
-                elif not isinstance(labels, (list, tuple)):
-                    labels = [labels]
-                    
-                if hasattr(probs, 'tolist'):
-                    probs = probs.tolist() if hasattr(probs.tolist, '__call__') else [float(probs)]
-                elif not isinstance(probs, (list, tuple)):
-                    probs = [float(probs)]
-                
-                for label, prob in zip(labels, probs):
-                    intent = str(label).replace("__label__", "")
-                    intents[intent] = float(prob)
-                
-                top_intent = list(intents.keys())[0] if intents else "unknown"
-                top_confidence = list(intents.values())[0] if intents else 0.0
-                
-                # Keep best result
-                if top_confidence > best_confidence:
-                    best_confidence = top_confidence
-                    best_result = IntentResult(
-                        intent=top_intent,
-                        confidence=top_confidence,
-                        all_intents=intents
-                    )
-            except Exception as e:
-                # Numpy or fasttext compatibility issue - continue to next variant or fallback
-                continue
-        
-        return best_result if best_result else IntentResult(
-            intent="unknown",
-            confidence=0.0,
-            all_intents={"unknown": 1.0}
-        )
+            if hasattr(probs, 'tolist'):
+                probs = probs.tolist() if hasattr(probs.tolist, '__call__') else [float(probs)]
+            elif not isinstance(probs, (list, tuple)):
+                probs = [float(probs)]
+            
+            for label, prob in zip(labels, probs):
+                intent = str(label).replace("__label__", "")
+                intents[intent] = float(prob)
+            
+            top_intent = list(intents.keys())[0] if intents else "unknown"
+            top_confidence = list(intents.values())[0] if intents else 0.0
+            
+            return IntentResult(
+                intent=top_intent,
+                confidence=top_confidence,
+                all_intents=intents
+            )
+        except Exception as e:
+            # If prediction fails, return unknown
+            return IntentResult(
+                intent="unknown",
+                confidence=0.0,
+                all_intents={"unknown": 1.0}
+            )
     
     def get_model_size_mb(self) -> float:
         """Get model size in MB"""
@@ -406,7 +345,8 @@ class LightweightIntentClassifier:
         model_type: str = "fasttext",
         model_path: Optional[str] = None,
         use_gpu: bool = False,
-        fallback_to_rules: bool = True
+        fallback_to_rules: bool = True,
+        vocabulary = None  # Optional MenuVocabulary for dynamic keyword detection
     ):
         """
         Initialize lightweight intent classifier
@@ -416,10 +356,12 @@ class LightweightIntentClassifier:
             model_path: Path to model file/directory
             use_gpu: Use GPU if available (for DistilBERT)
             fallback_to_rules: Use rule-based classifier as fallback
+            vocabulary: Optional MenuVocabulary for dynamic food keyword detection
         """
         self.model_type = model_type
         self.model = None
         self.rule_classifier = None
+        self.vocabulary = vocabulary
         
         # Initialize model
         if model_path:
@@ -451,9 +393,18 @@ class LightweightIntentClassifier:
         # Use rules if the result doesn't make sense contextually
         text_lower = text.lower()
         
-        # Check for specific misclassifications
-        food_keywords = ['dessert', 'burger', 'pizza', 'drink', 'coffee', 'salad', 'fries', 'cake', 'ice cream', 'chocolate']
-        has_food_keyword = any(keyword in text_lower for keyword in food_keywords)
+        # Check for specific misclassifications using DYNAMIC food keywords from vocabulary
+        food_keywords = []
+        if self.vocabulary:
+            # Extract all food-related terms from vocabulary
+            food_keywords.extend([cat.lower() for cat in self.vocabulary.categories])
+            food_keywords.extend([tag.lower() for tag in self.vocabulary.tags])
+            # Get first word of each item name as keyword
+            food_keywords.extend([name.split()[0].lower() for name in self.vocabulary.all_item_names if name])
+            # Remove duplicates and very short words
+            food_keywords = list(set([kw for kw in food_keywords if len(kw) > 3]))
+        
+        has_food_keyword = any(keyword in text_lower for keyword in food_keywords) if food_keywords else False
         
         # If text mentions food but classified as greeting, use rules
         if has_food_keyword and model_result.intent == 'greeting':
@@ -466,24 +417,21 @@ class LightweightIntentClassifier:
         return False
     
     def classify(self, text: str, top_k: int = 3) -> IntentResult:
-        """Classify intent with improved typo tolerance"""
+        """Classify intent using ML model only - no regex fallback"""
         if self.model:
             try:
                 model_result = self.model.predict(text, top_k)
                 
-                # Check if we should use rule-based instead
-                if self.rule_classifier and self._should_use_rule_based(text, model_result):
-                    print(f"  [Low confidence ({model_result.confidence:.2f}) or contextual mismatch - using rules]")
+                # Only use rule-based if model explicitly fails or returns very low confidence
+                # This ensures we trust the ML model even with medium confidence
+                if self.rule_classifier and (model_result.confidence < 0.30 or model_result.intent == "unknown"):
+                    print(f"  [Very low confidence ({model_result.confidence:.2f}) - checking rules]")
                     rule_result = self.rule_classifier.classify(text, top_k)
-                    # If rule-based has a strong match, use it
-                    if rule_result.confidence > 0.5:
-                        return rule_result
-                    # Otherwise, stick with model if it had some confidence
-                    elif model_result.confidence > 0.5:
-                        return model_result
-                    else:
+                    # Only override if rules have strong match
+                    if rule_result.confidence > 0.7:
                         return rule_result
                 
+                # Trust the ML model for everything else
                 return model_result
             except Exception as e:
                 print(f"⚠️  Model prediction failed: {e}")
@@ -493,6 +441,7 @@ class LightweightIntentClassifier:
                 else:
                     raise
         elif self.rule_classifier:
+            # No ML model available - use rules
             return self.rule_classifier.classify(text, top_k)
         else:
             return IntentResult(

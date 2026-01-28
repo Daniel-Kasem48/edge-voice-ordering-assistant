@@ -42,6 +42,7 @@ class ConversationContext:
     last_item_mentioned: Optional[str] = None
     awaiting_response_for: Optional[str] = None
     pending_item: Optional[PendingItem] = None  # Item waiting for options
+    pending_confirmation: Optional[Any] = None  # MatchedItem waiting for confirmation
     conversation_history: List[Dict[str, Any]] = field(default_factory=list)
     last_activity: datetime = field(default_factory=datetime.now)
     
@@ -72,15 +73,23 @@ class ConversationContext:
         self.last_item_mentioned = None
         self.awaiting_response_for = None
         self.pending_item = None
+        self.pending_confirmation = None
         self.conversation_history.clear()
 
 
 class ContextManager:
     """Manages conversation context for better understanding"""
     
-    def __init__(self):
+    def __init__(self, vocabulary=None):
+        """
+        Initialize context manager
+        
+        Args:
+            vocabulary: Optional MenuVocabulary for dynamic entity extraction
+        """
         self.context = ConversationContext()
         self.context_timeout_minutes = 5
+        self.vocabulary = vocabulary
     
     def set_pending_item(self, item_id: str, item_name: str, base_price: float, options: List[Dict[str, Any]]):
         """Set an item that needs options selected before adding to cart"""
@@ -180,6 +189,24 @@ class ContextManager:
         self.context.state = ConversationState.IDLE
         self.context.awaiting_response_for = None
     
+    def set_pending_confirmation(self, matched_item: Any):
+        """Set an item that needs confirmation before adding to cart"""
+        self.context.pending_confirmation = matched_item
+        self.context.state = ConversationState.AWAITING_ITEM_CONFIRMATION
+        self.context.awaiting_response_for = "match_confirmation"
+    
+    def get_pending_confirmation(self) -> Optional[Any]:
+        """Get the item pending confirmation"""
+        return self.context.pending_confirmation
+    
+    def clear_pending_confirmation(self):
+        """Clear pending confirmation"""
+        self.context.pending_confirmation = None
+        if self.context.awaiting_response_for == "match_confirmation":
+            self.context.awaiting_response_for = None
+        if self.context.state == ConversationState.AWAITING_ITEM_CONFIRMATION:
+            self.context.state = ConversationState.IDLE
+    
     def has_pending_options(self) -> bool:
         """Check if there are pending options to select"""
         if not self.context.pending_item:
@@ -224,15 +251,23 @@ class ContextManager:
                 self.context.awaiting_response_for = "item_selection"
     
     def _extract_entities(self, user_input: str, intent: str, response: str):
-        """Extract entities from conversation"""
-        # Extract categories
-        categories = ["pizza", "burger", "drink", "dessert", "salad", "side"]
-        for cat in categories:
-            if cat in user_input.lower():
-                self.context.last_category_mentioned = cat
-                break
+        """Extract entities from conversation using DYNAMIC vocabulary"""
+        # Extract categories dynamically from vocabulary
+        if self.vocabulary:
+            from menu.vocabulary import VocabularyMatcher
+            vocab_matcher = VocabularyMatcher(self.vocabulary)
+            matched_categories = vocab_matcher.match_category(user_input.lower())
+            if matched_categories:
+                self.context.last_category_mentioned = matched_categories[0]
         
-        # Extract specific items mentioned
+        # Extract specific items mentioned dynamically
+        if self.vocabulary and user_input:
+            user_lower = user_input.lower()
+            # Check if any item name is mentioned
+            for item_name in self.vocabulary.all_item_names:
+                if item_name.lower() in user_lower:
+                    self.context.last_item_mentioned = item_name
+                    break
         # This could be enhanced with actual menu item matching
         if intent == "add_to_cart" and "Added" in response:
             # Extract item from response
@@ -296,10 +331,17 @@ class ContextManager:
         if self.context.last_intent == "search_menu" and self.context.last_category_mentioned:
             # If user just says an item name after browsing a category
             if len(user_lower.split()) <= 3 and predicted_intent in ["unknown", "greeting"]:
-                # Check if it could be an item name or descriptor
-                item_words = ["vegetarian", "pepperoni", "margherita", "hawaiian", "bbq", 
-                            "chicken", "classic", "cheese", "bacon", "large", "small", 
-                            "coffee", "latte", "cola", "coke", "pepsi"]
+                # Check if it could be an item name or descriptor (DYNAMIC from vocabulary)
+                item_words = []
+                if self.vocabulary:
+                    # Extract all potential item descriptors from vocabulary
+                    item_words.extend([tag.lower() for tag in self.vocabulary.tags])
+                    # Get significant words from item names (more than 3 chars)
+                    for item_name in self.vocabulary.all_item_names:
+                        item_words.extend([word.lower() for word in item_name.split() if len(word) > 3])
+                    # Remove duplicates
+                    item_words = list(set(item_words))
+                
                 if any(word in user_lower for word in item_words):
                     return "add_to_cart", 0.85
         

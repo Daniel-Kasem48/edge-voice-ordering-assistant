@@ -54,14 +54,20 @@ class TextAssistant:
             wake_phrase=self.config.wake_word_phrase
         )
         
-        # NLP components
+        # Build vocabulary dynamically from menu FIRST (needed by other components)
+        menu_items = [self._item_to_dict(item) for item in self.config.menu_items]
+        self.vocabulary = MenuVocabularyBuilder(menu_items).build()
+        self.vocab_matcher = VocabularyMatcher(self.vocabulary)
+        print(f"  📖 Vocabulary: {len(self.vocabulary.categories)} categories, {len(self.vocabulary.tags)} tags, {len(self.vocabulary.all_item_names)} items")
+        
+        # NLP components - pass vocabulary for dynamic keyword detection
         # Try to use FastText model if available, otherwise fall back to rules
         try:
             from nlp.lightweight_intent_classifier import LightweightIntentClassifier
             from nlp.intent_router import IntentRouterConfig
             # Check for restaurant-optimized model first (priority order)
             model_options = [
-                ("models/restaurant_intent_medium.bin", "menu-trained medium model (19MB)"),
+                ("models/restaurant_intent_medium.bin", "menu-trained medium model (10MB)"),
                 ("models/restaurant_intent_small.bin", "menu-trained small model (5MB)"),
                 ("models/restaurant_intent_optimized.bin", "optimized model (20MB)"),
                 ("models/restaurant_intent.bin", "restaurant model"),
@@ -74,37 +80,35 @@ class TextAssistant:
                     model_classifier = LightweightIntentClassifier(
                         model_type="fasttext",
                         model_path=model_path,
-                        fallback_to_rules=True
+                        fallback_to_rules=False,  # Pure FastText - no regex fallback
+                        vocabulary=self.vocabulary  # Pass vocabulary for dynamic food keywords
                     )
                     self.intent_classifier = IntentRouter(
                         model_classifier=model_classifier,
-                        config=IntentRouterConfig(model_confidence_threshold=0.70)
+                        config=IntentRouterConfig(model_confidence_threshold=0.50),  # Lower threshold
+                        vocabulary=self.vocabulary  # Pass vocabulary for dynamic food detection
                     )
-                    print(f"  ✅ Using {model_name}")
+                    print(f"  ✅ Using {model_name} (pure ML, dynamic vocabulary)")
                     model_loaded = True
                     break
             
             if not model_loaded:
+                # If no FastText model, must use rules
                 self.intent_classifier = IntentClassifier(use_rules_fallback=True)
-                print("  📋 Using rule-based intent classifier")
+                print("  ⚠️  No FastText model found - using rule-based classifier")
         except ImportError:
             self.intent_classifier = IntentClassifier(use_rules_fallback=True)
-            print("  📋 Using rule-based intent classifier")
-            
-        self.menu_matcher = MenuMatcher(self.config)
+            print("  ⚠️  FastText not installed - using rule-based intent classifier")
         
-        # Build vocabulary dynamically from menu (no hardcoded item names)
-        menu_items = [self._item_to_dict(item) for item in self.config.menu_items]
-        self.vocabulary = MenuVocabularyBuilder(menu_items).build()
-        self.vocab_matcher = VocabularyMatcher(self.vocabulary)
-        print(f"  📖 Vocabulary: {len(self.vocabulary.categories)} categories, {len(self.vocabulary.tags)} tags")
+        # Pass vocabulary to MenuMatcher for dynamic category matching
+        self.menu_matcher = MenuMatcher(self.config, vocabulary=self.vocabulary)
         
         # Cart management
         self.cart_manager = CartManager()
         self.current_session = "default"
         
-        # Context management
-        self.context_manager = ContextManager()
+        # Context management with vocabulary
+        self.context_manager = ContextManager(vocabulary=self.vocabulary)
         
         # Speech formatting for TTS
         self.speech_formatter = SpeechFormatter()
@@ -201,6 +205,12 @@ class TextAssistant:
         """
         intent_name = intent.intent
         
+        # Early check for ingredient search patterns (before intent routing)
+        # This handles cases where the classifier misclassifies ingredient searches
+        ingredient_search = self._check_ingredient_search(text.lower())
+        if ingredient_search:
+            return ingredient_search
+        
         # Intent handlers
         handlers = {
             "add_to_cart": self._handle_add_to_cart,
@@ -268,11 +278,93 @@ class TextAssistant:
                 return f"Did you mean '{a.name}'? Reply with the item name."
 
             # Try to find what they might want
-            results = self.menu_matcher.search_menu(text, limit=3)
+            # Use vocabulary matcher to detect category from the text
+            detected_category = None
+            matched_categories = self.vocab_matcher.match_category(text.lower())
+            if matched_categories:
+                detected_category = matched_categories[0]  # Take the first matched category
+            
+            # Search with category filter if detected
+            results = self.menu_matcher.search_menu(text, limit=5)
             if results:
-                suggestions = ", ".join([r[0].name for r in results])
+                # Filter by category if detected
+                if detected_category:
+                    category_results = [(item, score) for item, score in results if item.category == detected_category]
+                    if category_results:
+                        # Show top 3 from the detected category
+                        results = category_results[:3]
+                        suggestions = ", ".join([r[0].name for r in results])
+                        return f"We don't have that exact {detected_category}. How about: {suggestions}?"
+                    else:
+                        # No matches in detected category - show what we have in that category
+                        category_items = [item for item in self.config.menu_items if item.category == detected_category]
+                        if category_items:
+                            item_names = ", ".join([item.name for item in category_items[:5]])
+                            return f"Sorry, we don't have that. Our {detected_category}s are: {item_names}. Which would you like?"
+                        else:
+                            available_categories = set(item.category for item in self.config.menu_items)
+                            cat_list = ", ".join(available_categories)
+                            return f"Sorry, we don't have {detected_category} items. We have: {cat_list}. What would you like?"
+                
+                # Show top 3 suggestions
+                suggestions = ", ".join([r[0].name for r in results[:3]])
                 return f"I couldn't find that exact item. Did you mean: {suggestions}?"
+            
             return "I couldn't find that item on our menu. Try 'help' to see what's available."
+        
+        # Check for temperature/tag conflicts in matched items
+        text_lower = text.lower()
+        conflicting_tags = {
+            "hot": ["cold", "iced", "frozen", "chilled"],
+            "cold": ["hot", "warm", "heated"],
+            "iced": ["hot", "warm", "heated"],
+            "warm": ["cold", "iced", "frozen", "chilled"],
+        }
+        
+        for matched_item in order.items:
+            item = matched_item.item
+            
+            # Check if user specified a temperature that conflicts with item tags
+            for temp_word, conflict_tags in conflicting_tags.items():
+                if temp_word in text_lower:
+                    item_tags_lower = [tag.lower() for tag in item.tags]
+                    if any(conflict in item_tags_lower for conflict in conflict_tags):
+                        # Temperature conflict detected
+                        # Try to find alternatives in the same category without the conflicting tags
+                        category = item.category
+                        available_items = [
+                            i for i in self.config.menu_items 
+                            if i.category == category 
+                            and not any(conflict in [t.lower() for t in i.tags] for conflict in conflict_tags)
+                            and i.id != item.id  # Exclude the conflicting item
+                        ]
+                        
+                        if available_items:
+                            suggestions = ", ".join([i.name for i in available_items[:3]])
+                            return f"We don't have {temp_word} {item.name.replace('Iced ', '').replace('Hot ', '')}. How about: {suggestions}?"
+                        else:
+                            # No alternatives - tell them what we have in that category
+                            all_category_items = [i for i in self.config.menu_items if i.category == category]
+                            if all_category_items:
+                                suggestions = ", ".join([i.name for i in all_category_items[:5]])
+                                return f"We don't have {temp_word} options for that. Our {category}s are: {suggestions}."
+                            else:
+                                return f"Sorry, we don't have any {temp_word} {category}s."
+        
+        # Check match confidence for each item
+        for matched_item in order.items:
+            match_score = matched_item.match_score
+            item = matched_item.item
+            
+            # Very low confidence (<70) - reject
+            if match_score < 70:
+                return f"I couldn't find '{text}' on our menu. Try 'help' to see what's available."
+            
+            # Medium confidence (70-89) - ask for confirmation
+            elif match_score < 90:
+                quantity_str = f"{matched_item.quantity} " if matched_item.quantity > 1 else ""
+                self.context_manager.set_pending_confirmation(matched_item)
+                return f"Did you mean '{quantity_str}{item.name}'? Say 'yes' to add it, or tell me what you want instead."
         
         # Check if any item has mandatory options that need selection
         for matched_item in order.items:
@@ -384,6 +476,50 @@ class TextAssistant:
         
         summary = self.cart.get_summary()
         return f"Ready to checkout!\n\n{summary}\n\nWould you like to complete this order? (say 'yes' to confirm)"
+    
+    def _check_ingredient_search(self, text: str) -> Optional[str]:
+        """
+        Check if user is searching for items BY ingredient.
+        Patterns: "what has X", "dishes with X", "items containing X", "what dishes have chicken"
+        Returns response if ingredient search query, None otherwise.
+        """
+        search_patterns = [
+            r"what\s+(?:dishes?|items?|foods?|meals?)\s+(?:have|has|contain|contains?|include|includes?)\s+(.+)",
+            r"(?:dishes?|items?|foods?|meals?)\s+(?:with|that have|that contain|containing|having)\s+(.+)",
+            r"(?:show|list|find)\s+(?:me\s+)?(?:all\s+)?(?:dishes?|items?|foods?|meals?)?\s+(?:with|that have|containing|having)\s+(.+)",
+            r"(?:what|which)\s+(?:has|have|contains?)\s+(.+)",
+            r"anything\s+(?:with|that has|containing)\s+(.+)",
+            r"(?:do you have|got)\s+(?:any\s+)?(?:dishes?|items?)?\s+(?:with|containing|that have)\s+(.+)",
+            r"what\s+do\s+you\s+have\s+(?:that\s+)?(?:has|have|contain|contains?|with)\s+(.+)",
+            r"(?:you\s+)?got\s+(?:any\s+)?(?:thing\s+)?(?:with|that has|containing)\s+(.+)",
+        ]
+        
+        for pattern in search_patterns:
+            match = re.search(pattern, text.lower())
+            if match:
+                ingredient = match.group(1).strip()
+                # Remove trailing question marks or punctuation
+                ingredient = ingredient.rstrip("?.,!")
+                return self._search_by_ingredient(ingredient)
+        
+        return None
+    
+    def _search_by_ingredient(self, ingredient: str) -> str:
+        """Search menu items that contain a specific ingredient"""
+        matching_items = []
+        
+        for item in self.config.menu_items:
+            # Check if ingredient is in the item's ingredients list
+            if hasattr(item, 'ingredients') and item.ingredients:
+                ingredients_lower = [ing.lower() for ing in item.ingredients]
+                if any(ingredient.lower() in ing for ing in ingredients_lower):
+                    matching_items.append(item)
+        
+        if matching_items:
+            item_names = ", ".join([item.name for item in matching_items])
+            return f"Items with {ingredient}: {item_names}. Which would you like?"
+        else:
+            return f"Sorry, I couldn't find any items with {ingredient}. Try 'help' to see the menu."
     
     def _check_ingredient_query(self, text: str) -> Optional[str]:
         """
@@ -524,6 +660,11 @@ class TextAssistant:
         """Handle ingredient queries (what's in X?, does X have Y?)"""
         text_lower = text.lower()
         
+        # Check if searching BY ingredient (e.g., "items with cheese")
+        ingredient_search = self._check_ingredient_search(text_lower)
+        if ingredient_search:
+            return ingredient_search
+        
         # Try to extract ingredient query using patterns
         response = self._check_ingredient_query(text_lower)
         if response:
@@ -577,7 +718,12 @@ class TextAssistant:
         """Handle query about item availability (do you have X?) or ingredients (what's in X?)"""
         text_lower = text.lower()
         
-        # Check if asking about ingredients
+        # Check if searching BY ingredient (e.g., "what has chicken")
+        ingredient_search = self._check_ingredient_search(text_lower)
+        if ingredient_search:
+            return ingredient_search
+        
+        # Check if asking about ingredients OF an item
         ingredient_query = self._check_ingredient_query(text_lower)
         if ingredient_query:
             return ingredient_query
@@ -715,6 +861,64 @@ class TextAssistant:
                 return f"So that's a {summary['options_text']} {summary['item_name']} for ${summary['total_price']:.2f}. Add it to your order?"
             else:
                 return f"So that's a {summary['item_name']} for ${summary['total_price']:.2f}. Add it to your order?"
+    
+    
+    def _handle_match_confirmation(self, text: str) -> str:
+        """Handle confirmation of an uncertain match"""
+        text_lower = text.lower().strip()
+        
+        # Check for yes/no
+        yes_words = ["yes", "yeah", "yep", "sure", "ok", "okay", "correct", "right", "that's it", "add it"]
+        no_words = ["no", "nope", "wrong", "not that", "different", "i don't want"]
+        
+        matched_item = self.context_manager.get_pending_confirmation()
+        
+        if any(word in text_lower for word in yes_words):
+            # User confirmed - proceed with adding the item
+            self.context_manager.clear_pending_confirmation()
+            
+            # Check if item has mandatory options
+            item = matched_item.item
+            mandatory_options = [opt for opt in item.options if opt.is_mandatory]
+            already_selected_option_ids = {so.option.id for so in matched_item.selected_options}
+            unselected_mandatory = [opt for opt in mandatory_options if opt.id not in already_selected_option_ids]
+            
+            if unselected_mandatory:
+                # Need to ask for options - trigger options flow
+                return self._start_options_flow(item, matched_item.quantity)
+            
+            # No mandatory options - add to cart
+            self.cart.add_item(matched_item)
+            total = self.cart.get_total()
+            qty_text = f"{matched_item.quantity}x " if matched_item.quantity > 1 else ""
+            return f"Added {qty_text}{item.name} to your order. Your total is now ${total:.2f}."
+        
+        elif any(word in text_lower for word in no_words):
+            # User rejected - try to find what they actually want
+            rejected_item = matched_item.item
+            self.context_manager.clear_pending_confirmation()
+            
+            # Try to parse what they actually want from their response
+            if len(text_lower.split()) > 2:
+                # They might have said "no i want X"
+                # Classify the intent for the new request
+                intent = self.intent_classifier.classify(text)
+                
+                # Parse to see if they're asking for the same wrong item
+                order = self.menu_matcher.parse_order(text)
+                if order.items and order.items[0].item.id == rejected_item.id:
+                    # They're insisting on the same match - tell them it's not available
+                    return f"Sorry, we don't have that exact item. We have {rejected_item.name}. Would you like to see the menu? Say 'help' or 'show drinks'."
+                
+                return self._handle_add_to_cart(text, intent)
+            else:
+                return "OK, what would you like instead? You can say 'help' to see the menu."
+        
+        else:
+            # Didn't understand - repeat the question
+            item = matched_item.item
+            qty_text = f"{matched_item.quantity} " if matched_item.quantity > 1 else ""
+            return f"Just say 'yes' to add {qty_text}{item.name}, or 'no' if that's not what you want."
     
     def _handle_pending_item_confirmation(self, text: str) -> str:
         """Handle confirmation of pending item with selected options"""
@@ -982,6 +1186,11 @@ class TextAssistant:
         """Handle unknown intent"""
         text_lower = text.lower().strip()
         
+        # Check if searching BY ingredient (e.g., "what has chicken")
+        ingredient_search = self._check_ingredient_search(text_lower)
+        if ingredient_search:
+            return ingredient_search
+        
         # Handle follow-up questions like "only this?", "anything else?", "more options?"
         follow_up_phrases = ["only this", "that's it", "that all", "anything else", "more options", 
                             "what else", "other options", "is that all", "just these"]
@@ -1038,6 +1247,37 @@ class TextAssistant:
         """
         if not text.strip():
             return ""
+        
+        # Check for negative sentiment/profanity
+        text_lower = text.lower().strip()
+        profanity_words = ["fuck", "shit", "damn", "hell", "stupid", "idiot", "shut up"]
+        frustration_phrases = ["you're useless", "don't understand", "not listening", "stop", "wrong"]
+        
+        if any(word in text_lower for word in profanity_words):
+            return "I understand you're frustrated. Let me try to help - what would you like?"
+        
+        if any(phrase in text_lower for phrase in frustration_phrases) and len(text_lower.split()) < 10:
+            return "Sorry if I misunderstood. Let's start fresh - how can I help you?"
+        
+        # Check for ingredient queries BEFORE confirmation handling
+        # This allows users to ask about ingredients even when there's a pending confirmation
+        ingredient_search = self._check_ingredient_search(text_lower)
+        if ingredient_search:
+            # Clear pending confirmation if they're asking about ingredients
+            if self.context_manager.get_pending_confirmation():
+                self.context_manager.clear_pending_confirmation()
+            return ingredient_search
+        
+        ingredient_query = self._check_ingredient_query(text_lower)
+        if ingredient_query:
+            # Clear pending confirmation if they're asking about ingredients
+            if self.context_manager.get_pending_confirmation():
+                self.context_manager.clear_pending_confirmation()
+            return ingredient_query
+        
+        # Check if we're waiting for match confirmation
+        if self.context_manager.get_pending_confirmation():
+            return self._handle_match_confirmation(text)
         
         # Check if we're waiting for an option selection
         if self.context_manager.has_pending_options():

@@ -127,7 +127,8 @@ class MenuMatcher:
         self,
         config: TenantConfig,
         fuzzy_threshold: int = 80,  # Increased from 70 to 80 for stricter matching
-        exact_match_bonus: int = 30
+        exact_match_bonus: int = 30,
+        vocabulary = None  # Optional MenuVocabulary for dynamic category matching
     ):
         """
         Initialize menu matcher
@@ -136,10 +137,12 @@ class MenuMatcher:
             config: Tenant configuration with menu items
             fuzzy_threshold: Minimum fuzzy match score (0-100)
             exact_match_bonus: Bonus for exact matches
+            vocabulary: Optional MenuVocabulary for dynamic category detection
         """
         self.config = config
         self.fuzzy_threshold = fuzzy_threshold
         self.exact_match_bonus = exact_match_bonus
+        self.vocabulary = vocabulary
         
         # Build lookup indexes
         self._build_indexes()
@@ -485,6 +488,7 @@ class MenuMatcher:
         # This avoids substring false positives like "cheezburger" matching "burger".
         if not best_item_match:
             remaining_padded = f" {remaining} "
+            remaining_words = remaining.split()
             for term, item in self.item_index.items():
                 term_words = term.split()
                 if not term:
@@ -492,7 +496,17 @@ class MenuMatcher:
                 # Single-word terms must match as a whole word
                 if len(term_words) == 1:
                     if f" {term} " in remaining_padded:
-                        score = 100 if term == remaining.strip() else 95
+                        if term == remaining.strip():
+                            score = 100  # Exact match
+                        else:
+                            # Partial match - penalize based on unmatched words
+                            # If query has extra words, it's less confident
+                            unmatched_word_count = len(remaining_words) - 1
+                            if unmatched_word_count > 0:
+                                # Reduce score significantly for extra words
+                                score = max(75, 95 - (unmatched_word_count * 15))
+                            else:
+                                score = 95
                         if score > best_score:
                             best_item_match = item
                             best_score = score
@@ -508,17 +522,27 @@ class MenuMatcher:
 
         # If still no match, try fuzzy matching
         if not best_item_match:
-            # For generic terms like "pizza" without modifiers, prefer first item
-            if remaining.strip() in ['pizza', 'burger', 'salad', 'drink']:
-                # Find simplest/cheapest item in that category
-                category_items = [item for item in self.config.menu_items 
-                                if remaining.strip() in item.category.lower()]
-                if category_items:
-                    # Sort by price (simplest usually cheapest)
-                    category_items.sort(key=lambda x: x.price)
-                    best_item_match = category_items[0]
-                    best_score = 90
-            else:
+            # Check if remaining text matches a category (dynamic, from vocabulary)
+            category_matched = False
+            if self.vocabulary:
+                # Try to match category using vocabulary
+                from menu.vocabulary import VocabularyMatcher
+                vocab_matcher = VocabularyMatcher(self.vocabulary)
+                matched_categories = vocab_matcher.match_category(remaining.strip())
+                
+                if matched_categories:
+                    # Find simplest/cheapest item in matched categories
+                    category_items = [item for item in self.config.menu_items 
+                                    if item.category in matched_categories]
+                    if category_items:
+                        # Sort by price (simplest usually cheapest)
+                        category_items.sort(key=lambda x: x.price)
+                        best_item_match = category_items[0]
+                        best_score = 90
+                        category_matched = True
+            
+            # If no category match, try fuzzy item matching
+            if not category_matched:
                 item_match = self.match_item(remaining)
                 if item_match:
                     best_item_match, best_score = item_match
@@ -526,12 +550,20 @@ class MenuMatcher:
         # Fallback: simple plural normalization ("pizzas" -> "pizza")
         if not best_item_match and remaining.strip().endswith('s') and len(remaining.strip()) > 3:
             singular = remaining.strip()[:-1]
-            if singular in ['pizza', 'burger', 'salad', 'drink']:
-                category_items = [item for item in self.config.menu_items if singular in item.category.lower()]
-                if category_items:
-                    category_items.sort(key=lambda x: x.price)
-                    best_item_match = category_items[0]
-                    best_score = 90
+            
+            # Check if singular form matches a category (dynamic)
+            if self.vocabulary:
+                from menu.vocabulary import VocabularyMatcher
+                vocab_matcher = VocabularyMatcher(self.vocabulary)
+                matched_categories = vocab_matcher.match_category(singular)
+                
+                if matched_categories:
+                    category_items = [item for item in self.config.menu_items 
+                                    if item.category in matched_categories]
+                    if category_items:
+                        category_items.sort(key=lambda x: x.price)
+                        best_item_match = category_items[0]
+                        best_score = 90
             else:
                 item_match = self.match_item(singular)
                 if item_match:
